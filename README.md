@@ -11,7 +11,7 @@ Find and save your favorite anime and manga to a curated list
 ### 2. User Stories (to do now)
 This app is for two types of users: a visitor and a logged-in user
 
-###### (Example) Landing Page (Importance - High) (Est: 1h)
+###### Landing Page (Importance - High) (Est: 1h)
 * as a visitor
 * I want to understand what I can do with this app (or sign up, or log in)
 * so I can decide if I want to use it
@@ -94,11 +94,12 @@ Register Page
 ### 6. Front-end Structure - React Components Map (to do later)
 * __Index.js__ (stateless)
     * __App.js__ (stateful)
+        * __Navbar.js__ (stateless) - 
         * __LandingPage.js__ (stateful) - gets the _"prop name"_ and the _"callback prop name"_ from the __App.js__
             * __Login.js__ (stateful) -
             * __Register.js__ (stateful) - 
             * __SearchBar.js__ (stateful) - gets searches from users and boxes imported from context
-        * __Navbar.js__ (stateless) - 
+        
         * __UserAccount.js__ (stateful) - receives user selected from 
         * __LootBoxes.js__ (stateful) - gets drops held in state and imported from context
             * __Drops.js__ (stateufl) - gets drops contained in each lootbox from LootBox.js
