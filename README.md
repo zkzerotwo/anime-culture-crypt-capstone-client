@@ -1,5 +1,5 @@
-# Anime Culture Crypt 
-Find and save your favorite anime to a curated list
+# The Lootbox 
+Find and save your favorite anime and manga to a curated list
 
 
 
@@ -16,20 +16,51 @@ This app is for two types of users: a visitor and a logged-in user
 * I want to understand what I can do with this app (or sign up, or log in)
 * so I can decide if I want to use it
 
-###### (Example) Login Page (Importance - High) (Est: 3h)
+
+
+###### Login Page (Importance - High) (Est: 3h)
 * As a returning register user
 * I want to enter my password and username to use this app,
 * So I can have access to my account.
 
-###### (Example) Sign Up (Importance - High)  (Est: 3h)
+
+
+###### Sign Up (Importance - High)  (Est: 3h)
 * As a visitor
 * I want to register to use this app
-* So I can create a personal account.
+* So I can create a personal account to view my Lootboxes
 
-###### (Example) Home Page (Importance - Medium)  (Est: 2h)
+######  Home Page (Importance - High)  (Est: 2h)
+* As a visitor
+* I want to register to use this app
+* So I can create a personal account to view my Lootboxes
+
+* As a visitor
+* I want to search by keyword, genre, character, or voice actor the myAnimeList API
+* so I can view series by those criteria
+
+* As a visitor
+* I want to sign up to save my searched anime to Lootboxes
+* so I can view my saved series later
+
 * As a logged-in user,
 * I want to be able to preview the content of the app,
 * So i can decide what section I want to navigate to.
+
+* As a logged-in user,
+* I want to be able to search other users Lootboxes first
+* So i can see what other users are adding to Lootboxes
+
+###### Edit Page (Importance - High)  (Est: 2h)
+
+* As a logged-in user,
+* I want to be able to see all my lootboxes
+* So i can choose which one I want to edit
+
+* As a logged-in user,
+* I want to be able to return to and edit my lootboxes
+* So i can change and update them as my taste evolves
+
 
 
 
@@ -61,12 +92,16 @@ Register Page
 
 
 ### 6. Front-end Structure - React Components Map (to do later)
-* (Example) __Index.js__ (stateless)
+* __Index.js__ (stateless)
     * __App.js__ (stateful)
         * __LandingPage.js__ (stateful) - gets the _"prop name"_ and the _"callback prop name"_ from the __App.js__
             * __Login.js__ (stateful) -
-            * __Register.js__ (stateful) -
-        * __Navbar.js__ (stateless) -
+            * __Register.js__ (stateful) - 
+            * __SearchBar.js__ (stateful) - gets searches from users and boxes imported from context
+        * __Navbar.js__ (stateless) - 
+        * __UserAccount.js__ (stateful) - receives user selected from 
+        * __LootBoxes.js__ (stateful) - gets drops held in state and imported from context
+            * __Drops.js__ (stateufl) - gets drops contained in each lootbox from LootBox.js
 
 
 
@@ -75,15 +110,15 @@ Register Page
     * id (auto-generated)
     * username (email validation)
     * password (at least 8 chars, at least one alpha and a special character validation)
-*  Crypts (database table)
+*  Lootboxes (database table)
     * id (auto-generated)
     * user_id (foreign key to users list)
     * title (varchar 255 not null)
     * description (varchar 255 not null)
     * is_public (integer not null default 0)
-* Scrolls (database table)
+* Drops (database table)
     * id (auto-generated) 
-    * crypt_id (foreign key to crypts list)
+    * lootbox_id (foreign key to lootboxes list)
     * anime_title (varchar 255 not null) (api)
     * genre (varchar 255 not null) (api)
     * image_url (varchar 255 not null) (api)
