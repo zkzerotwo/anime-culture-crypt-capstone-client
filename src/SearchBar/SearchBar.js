@@ -10,10 +10,11 @@ export default class SearchBar extends React.Component {
                         id='keyword'
                         name='keyword'
                         placeholder='Search by keyword or genre'
-                        value='action'
+                        // value='action'
                         required
                         ></input>
                     </label>
+                    <p>Hey there!</p>
 
                     <button>
                         Submit!
