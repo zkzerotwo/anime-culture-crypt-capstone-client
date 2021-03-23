@@ -1,70 +1,212 @@
-# Getting Started with Create React App
+# The Lootbox 
+Find and save your favorite anime and manga to a curated list
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
 
-In the project directory, you can run:
+### 1. Working Prototype (to do later)
+(Example) You can access a working prototype of the React app here: https://your-app-client.herokuapp.com/ and Node app here: https://your-app-server.herokuapp.com/
 
-### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+### 2. User Stories (to do now)
+This app is for two types of users: a visitor and a logged-in user
 
-### `npm test`
+###### Landing Page (Importance - High) (Est: 1h)
+* as a visitor
+* I want to understand what I can do with this app (or sign up, or log in)
+* so I can decide if I want to use it
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+###### Login Page (Importance - High) (Est: 3h)
+* As a returning register user
+* I want to enter my password and username to use this app,
+* So I can have access to my account.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
+###### Sign Up (Importance - High)  (Est: 3h)
+* As a visitor
+* I want to register to use this app
+* So I can create a personal account to view my Lootboxes
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+######  Home Page (Importance - High)  (Est: 2h)
+* As a visitor
+* I want to register to use this app
+* So I can create a personal account to view my Lootboxes
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+######  Home Page (Importance - High)  (Est: 2h)
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+* As a visitor
+* I want to search by keyword, genre, character, or voice actor the myAnimeList API
+* so I can view series by those criteria
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+######  Home Page (Importance - High)  (Est: 2h)
 
-## Learn More
+* As a visitor
+* I want to sign up to save my searched anime to Lootboxes
+* so I can view my saved series later
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+######  Home Page (Importance - High)  (Est: 1h)
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+* As a logged-in user,
+* I want to be able to preview the content of the app,
+* So i can decide what section I want to navigate to.
 
-### Code Splitting
+######  Home Page (Importance - High)  (Est: 2h)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+* As a logged-in user,
+* I want to be able to search other users Lootboxes first
+* So i can see what other users are adding to Lootboxes
 
-### Analyzing the Bundle Size
+###### Edit Page (Importance - High)  (Est: 2h)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+* As a logged-in user,
+* I want to be able to see all my lootboxes
+* So i can choose which one I want to edit
 
-### Making a Progressive Web App
+###### Edit Page (Importance - High)  (Est: 2h)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+* As a logged-in user,
+* I want to be able to return to and edit my lootboxes
+* So i can change and update them as my taste evolves
 
-### Advanced Configuration
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
 
-### Deployment
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+### 3. Functionality
+The app's functionality includes:
+* Every User has the ability to create an account
+* Every User has the ability to search myAnimeList API
+* Every User has the ability to save and name their list 
+* Every User has the ability to search other users public lists
+* Every User has the ability to save private lists
+* Every User has the ability to search by genre, keyword, voice actor, character, airing, and user
+* Every User has the ability to click a link to watch their show
 
-### `npm run build` fails to minify
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+### 4. Technology (done)
+* Front-End: HTML5, CSS3, JavaScript ES6, React
+* Back-End: Node.js, Express.js, Mocha, Chai, RESTful API Endpoints, Postgres
+* Development Environment: Heroku, DBeaver
+
+
+
+### 5. Wireframes (to do now)
+(Example) Landing Page
+:-------------------------:
+![Landing Page](/github-images/wireframes/landing-page-wireframe.png)
+Register Page
+![Register Page](/github-images/wireframes/register-page-wireframe.png)
+
+
+
+### 6. Front-end Structure - React Components Map (to do later)
+* __Index.js__ (stateless)
+    * __App.js__ (stateful)
+        * __Navbar.js__ (stateless) - 
+        * __LandingPage.js__ (stateful) - gets the _"prop name"_ and the _"callback prop name"_ from the __App.js__
+            * __Login.js__ (stateful) -
+            * __Register.js__ (stateful) - 
+            * __SearchBar.js__ (stateful) - gets searches from users and boxes imported from context
+            * __ResultBar__ (stateful) - gets data from fetch requests either from user lootboxes or API
+        * __UserAccount.js__ (stateful) - receives user selected from 
+        * __LootBoxes.js__ (stateful) - gets drops held in state and imported from context
+            * __Drops.js__ (stateufl) - gets drops contained in each lootbox from LootBox.js
+        * __Footer.js__ (stateless) - Displays contact data, a site map
+
+
+
+### 7. Back-end Structure - Business Objects (to do later)
+*  Users (database table)
+    * id (auto-generated)
+    * username (email validation)
+    * password (at least 8 chars, at least one alpha and a special character validation)
+*  Lootboxes (database table)
+    * id (auto-generated)
+    * user_id (foreign key to users list)
+    * title (varchar 255 not null)
+    * description (varchar 255 not null)
+    * is_public (integer not null default 0)
+* Drops (database table)
+    * id (auto-generated) 
+    * lootbox_id (foreign key to lootboxes list)
+    * anime_title (varchar 255 not null) (api)
+    * genre (varchar 255 not null) (api)
+    * image_url (varchar 255 not null) (api)
+    * description (varchar 255 not null) (api)
+
+### 8. API Documentation (to do later)
+#### API Overview
+```text
+    /api
+    .
+    ├── /auth
+    │   └── POST
+    │       ├── /login
+    ├── /users
+    │   └── POST
+    │       └── /
+```
+
+##### POST `/api/auth/login`
+```js
+    // req.body
+    {
+        "user_name": "demo@gmail.com",
+        "password": "Password1"
+    }
+
+    // res.body
+    {
+    "authToken": String,
+        "userId": 1
+    }
+```
+
+##### POST `/api/users/`
+```js
+    // req.body
+    {
+        "user_name": "demo@gmail.com",
+        "password": "123456"
+    }
+
+
+    // res.body
+    {
+        "id": 1,
+        "user_name": "demo@gmail.com"
+    }
+```
+
+
+
+### 9. Screenshots (to do later)
+(Example) Landing Page
+:-------------------------:
+![Landing Page](/github-images/screenshots/landing-page-screenshot.png)
+Register Page
+![Register Page](/github-images/screenshots/register-page-screenshot.png)
+
+
+
+### 10. Development Roadmap (to do later)
+This is v1.0 of the app, but future enhancements are expected to include:
+* (Example) add more functionality
+
+
+
+### 11. How to run it (done)
+Use command line to navigate into the project folder and run the following in terminal
+
+##### Local React scripts
+* To install the react project ===> npm install
+* To run react (on port 3000) ===> npm start
+* To run tests ===> npm run test
+
+##### Local Node scripts
+* To install the node project ===> npm install
+* To migrate the database ===> npm run migrate -- 1
+* To run Node server (on port 8000) ===> npm run dev
+* To run tests ===> npm run test   
