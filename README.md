@@ -35,17 +35,25 @@ This app is for two types of users: a visitor and a logged-in user
 * I want to register to use this app
 * So I can create a personal account to view my Lootboxes
 
+######  Home Page (Importance - High)  (Est: 2h)
+
 * As a visitor
 * I want to search by keyword, genre, character, or voice actor the myAnimeList API
 * so I can view series by those criteria
+
+######  Home Page (Importance - High)  (Est: 2h)
 
 * As a visitor
 * I want to sign up to save my searched anime to Lootboxes
 * so I can view my saved series later
 
+######  Home Page (Importance - High)  (Est: 1h)
+
 * As a logged-in user,
 * I want to be able to preview the content of the app,
 * So i can decide what section I want to navigate to.
+
+######  Home Page (Importance - High)  (Est: 2h)
 
 * As a logged-in user,
 * I want to be able to search other users Lootboxes first
@@ -56,6 +64,8 @@ This app is for two types of users: a visitor and a logged-in user
 * As a logged-in user,
 * I want to be able to see all my lootboxes
 * So i can choose which one I want to edit
+
+###### Edit Page (Importance - High)  (Est: 2h)
 
 * As a logged-in user,
 * I want to be able to return to and edit my lootboxes
@@ -99,10 +109,11 @@ Register Page
             * __Login.js__ (stateful) -
             * __Register.js__ (stateful) - 
             * __SearchBar.js__ (stateful) - gets searches from users and boxes imported from context
-        
+            * __ResultBar__ (stateful) - gets data from fetch requests either from user lootboxes or API
         * __UserAccount.js__ (stateful) - receives user selected from 
         * __LootBoxes.js__ (stateful) - gets drops held in state and imported from context
             * __Drops.js__ (stateufl) - gets drops contained in each lootbox from LootBox.js
+        * __Footer.js__ (stateless) - Displays contact data, a site map
 
 
 
