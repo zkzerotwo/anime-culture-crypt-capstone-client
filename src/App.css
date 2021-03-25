@@ -2,10 +2,6 @@
   text-align: center;
 }
 
-.App-header {
-  position: fixed;
-}
-
 .search-results {
   display: block;
   width: 100%
@@ -17,4 +13,27 @@
   flex-direction: row;
   justify-content: space-around;
   height: 50px;
+}
+
+.intro-card {
+  display: block;
+  width: 50%;
+  margin: auto;
+}
+
+input[type=text] {
+  width: 50%;
+  border-radius: 5px;
+}
+
+li {
+  display: block;
+  list-style: none;
+  
+}
+
+.entries li {
+  width: 50%;
+  display: flex;
+  flex-direction: row;
 }
