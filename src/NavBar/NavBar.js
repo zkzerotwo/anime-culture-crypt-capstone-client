@@ -10,7 +10,7 @@ function NavBar() {
             <NavLink to='/login'><h3>Login</h3></NavLink>
             <NavLink to='/account'><h3>Account</h3></NavLink>
             <NavLink to='/register'><h3>Sign Up</h3></NavLink>
-            <NavLink to='/edit'><h3>Sign Up</h3></NavLink>
+            {/* <NavLink to='/edit'><h3>Sign Up</h3></NavLink> */}
         </div>
     )
 }
