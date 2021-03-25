@@ -38,17 +38,33 @@ const personSearchResults= {
 }
 
 const mangaSearchResults = {
-    "mal_id": 854,
-    "url": "https://myanimelist.net/manga/854/Code_Name_wa_Sailor_V",
-    "image_url": "https://cdn.myanimelist.net/images/manga/3/6602.jpg?s=e95c688ece4500a68488956e43885ee8",
-    "title": "Code Name wa Sailor V",
-    "publishing": false,
-    "synopsis": "\"The Pretty Guardian in a Sailor Suit! Sailor Venus has arrived!\" 13-year-old Minako Aino is an active tomboy who loves idols and video games, and is a popular member of Shiba Koen Junior High School'...",
-    "type": "Manga",
-    "chapters": 15,
-    "volumes": 3,
-    "score": 7.5,
-    "start_date": "1991-01-01T00:00:00+00:00",
-    "end_date": "1997-01-01T00:00:00+00:00",
-    "members": 9672
+    mal_id: 854,
+    url: "https://myanimelist.net/manga/854/Code_Name_wa_Sailor_V",
+    image_url: "https://cdn.myanimelist.net/images/manga/3/6602.jpg?s=e95c688ece4500a68488956e43885ee8",
+    title: "Code Name wa Sailor V",
+    publishing: false,
+    synopsis: "\"The Pretty Guardian in a Sailor Suit! Sailor Venus has arrived!\" 13-year-old Minako Aino is an active tomboy who loves idols and video games, and is a popular member of Shiba Koen Junior High School'...",
+    type: "Manga",
+    chapters: 15,
+    volumes: 3,
+    score: 7.5,
+    start_date: "1991-01-01T00:00:00+00:00",
+    end_date: "1997-01-01T00:00:00+00:00",
+    members: 9672
 }
+
+const animeSearchResults = {
+        mal_id: 813,
+        url: "https://myanimelist.net/anime/813/Dragon_Ball_Z",
+        image_url: "https://cdn.myanimelist.net/images/anime/6/20936.jpg?s=0f99859bc8ded1ec9dbd92619b831561",
+        title: "Dragon Ball Z",
+        airing: false,
+        synopsis: "Five years after winning the World Martial Arts tournament, Gokuu is now living a peaceful life with his wife and son. This changes, however, with the arrival of a mysterious enemy named Raditz who pr...",
+        type: "TV",
+        episodes: 291,
+        score: 8.15,
+        start_date: "1989-04-26T00:00:00+00:00",
+        end_date: "1996-01-31T00:00:00+00:00",
+        members: 910370,
+        rated: "PG-13"
+    }
