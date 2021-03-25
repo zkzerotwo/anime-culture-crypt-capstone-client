@@ -2,14 +2,19 @@
   text-align: center;
 }
 
+.App-header {
+  position: fixed;
+}
+
 .search-results {
   display: block;
   width: 100%
 }
 
 .nav {
-  position: fixed;
   margin-top: 0px;
   display: flex;
   flex-direction: row;
+  justify-content: space-around;
+  height: 50px;
 }
