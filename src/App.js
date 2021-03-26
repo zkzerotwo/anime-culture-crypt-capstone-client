@@ -4,7 +4,7 @@ import './App.css';
 import LandingPage from './LandingPage/LandingPage'
 import Login from './Login/Login'
 import Register from './Register/Register'
-import UserAccount from './UserAccount/UserAccount'
+import Dashboard from './Dashboard/Dashboard'
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import LootboxContext from './LootboxContext';
 
@@ -47,7 +47,8 @@ class App extends React.Component {
               <Route exact path='/' component={LandingPage} />
               <Route path='/login' component={Login} />
               <Route path='/register' component={Register} />
-              <Route path='/account' component={UserAccount} />
+              <Route path='/dashboard' component={Dashboard} />
+
               {/* dynamic route */}
               {/* <Route path="/account/:variable_name" component={GrandChild} /> */}
               {/* error route */}
