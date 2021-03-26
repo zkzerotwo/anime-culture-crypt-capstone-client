@@ -19,16 +19,16 @@ class App extends React.Component {
   }
 
   handleAddToLootbox = (lootbox) => {
-this.setState({
-  lootboxes: [...this.state.lootboxes, lootbox]
-})
+    this.setState({
+      lootboxes: [...this.state.lootboxes, lootbox]
+    })
   }
 
   handleAddToDrops = () => {
 
   }
 
-  
+
   render() {
     const contextValue = {
       searchResults: this.state.searchResults,

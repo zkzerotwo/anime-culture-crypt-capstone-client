@@ -87,9 +87,9 @@ class Login extends React.Component {
     };
 
     render() {
-        const msg = this.state.error ? <p>
-            {this.state.error}
-        </p>:
+        // const msg = this.state.error ? <p>
+        //     {this.state.error}
+        // </p>:
         <div></div>;
         return (
             <div className="Login">
@@ -101,7 +101,7 @@ class Login extends React.Component {
 
                     <form className="loginForm" onSubmit={this.loginUser}>
                     <div className = "errorMessage">
-                        {msg}
+                        {/* {msg} */}
                     </div>
                         <label htmlFor="userName">Username</label>
                         <input

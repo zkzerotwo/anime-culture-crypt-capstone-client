@@ -120,7 +120,7 @@ Register Page
 ### 7. Back-end Structure - Business Objects (to do later)
 *  Users (database table)
     * id (auto-generated)
-    * username (email validation)
+    * user_name (email validation)
     * password (at least 8 chars, at least one alpha and a special character validation)
 *  Lootboxes (database table)
     * id (auto-generated)
@@ -147,6 +147,28 @@ Register Page
     ├── /users
     │   └── POST
     │       └── /
+    |   └── GET
+            └── /:user_id
+    ├── /lootboxes
+    │   └── GET
+            ├── /
+    │       ├── /:lootbox_id
+        └── POST
+    │       ├── /
+        └── DELETE
+    │       ├── /:lootbox_id
+        └── PATCH
+    │       ├── /:lootbox_id
+    ├── /lootboxes
+    │   └── GET
+            ├── /
+    │       ├── /:drop_id
+        └── POST
+    │       ├── /
+        └── DELETE
+    │       ├── /:drop_id
+        └── PATCH
+    │       ├── /:drop_id
 ```
 
 ##### POST `/api/auth/login`

@@ -14,7 +14,8 @@ export default class SearchBar extends React.Component {
             options: [
                 "anime", "manga", "person", "character"
             ],
-            searchResults: []
+            searchResults: [],
+            lootboxes: []
         }
     }
     static defaultProps = {

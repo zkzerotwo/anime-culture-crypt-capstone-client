@@ -1,4 +1,8 @@
 import React from 'react'
+import { NavLink } from 'react-router-dom'
+import ValidationError from '../ValidationError'
+import TokenService from '../services/token-service'
+import AuthApiService from '../services/token-service'
 
 export default class Register extends React.Component {
     constructor(props) {
@@ -16,7 +20,7 @@ export default class Register extends React.Component {
                 value: "",
                 touched: false,
             },
-        
+
         }
     }
     changeUsername(user_name) {
@@ -78,9 +82,123 @@ export default class Register extends React.Component {
         }
 
     }
+    registerUser = (event) => {
+        event.preventDefault();
+        //get the input from the form submission
+        const data = {};
+        //get the payload from the form submission
+        const formData = new FormData(event.target);
+        for (let value of formData) {
+            data[value[0]] = value[1];
+        }
+        // console.log(data);
+
+        let { user_name,
+            password
+        } = data;
+        //console.log(user_name, password, repeatPassword);
+
+
+        this.setState({ error: null })
+        AuthApiService.postUser({
+            user_name,
+            password
+        })
+
+            .then(response => {
+                //console.log('user:', response)
+                TokenService.saveAuthToken(response.authToken)
+                TokenService.saveUserId(response.id)
+                // window.location = "/add-item"
+            })
+
+            .catch(res => {
+                this.setState({ error: res.error })
+            })
+    }
     render() {
+        const msg = this.state.error ?
+            <p>
+                {this.state.error}
+            </p> :
+            <div></div>;
         return (
-            <p>Let's Register!</p>
+            <div className="Register">
+                <section id="signUpPage">
+                    <h2>Sign up</h2>
+                    <form className="registerForm" onSubmit={this.registerUser}>
+                        <div className="errorMessage">
+                            {msg}
+                        </div>
+                        <label htmlFor="username">Username</label>
+                        <input
+                            type="text"
+                            name="user_name"
+                            placeholder="Username"
+                            onChange={(e) =>
+                                this.changeUsername(e.target.value)
+                            }
+                            required
+                        />
+                        {this.state.user_name.touched && (
+                            <ValidationError
+                                message={this.validateUserName()}
+                            />
+                        )}
+
+                        <label>Password</label>
+                        <input
+                            type="Password"
+                            name="password"
+                            placeholder="Password"
+                            onChange={(e) =>
+                                this.changePassword(e.target.value)
+                            }
+                            required
+                        />
+
+                        {this.state.password.touched && (
+                            <ValidationError
+                                message={this.validatePassword()}
+                            />
+                        )}
+
+
+                        <label>Repeat Password</label>
+                        <input
+                            type="Password"
+                            name="repeatPassword"
+                            placeholder="Repeat Password"
+                            onChange={(e) =>
+                                this.updateRepeatPassword(e.target.value)
+                            }
+                            required
+                        />
+
+                        {this.state.repeatPassword.touched && (
+                            <ValidationError
+                                message={this.validateRepeatPassword()}
+                            />
+                        )}
+                        <button
+                            className="signup-button"
+                            id="register-button"
+                            type="submit"
+                            disabled={this.state.submitButtonDisabled}
+                        >
+                            Sign Up
+                        </button>
+                    </form>
+                    <div className="login">
+                        <p>
+                            Already have an account?
+                        </p>
+                        <p>
+                            <NavLink to="/login">Log in here</NavLink>
+                        </p>
+                    </div>
+                </section>
+            </div>
         )
     }
 }
