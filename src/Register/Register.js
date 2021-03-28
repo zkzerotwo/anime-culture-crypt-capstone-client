@@ -2,7 +2,7 @@ import React from 'react'
 import { NavLink } from 'react-router-dom'
 import ValidationError from '../ValidationError'
 import TokenService from '../services/token-service'
-import AuthApiService from '../services/token-service'
+import AuthApiService from '../services/auth-api-service'
 
 export default class Register extends React.Component {
     constructor(props) {
