@@ -4,6 +4,7 @@ import TokenService from '../services/token-service'
 import { getDropsForLootbox, findLootbox, lootboxesByOwner, dropsByLootbox } from '../lootbox-handlers'
 import { Link } from 'react-router-dom'
 import Lootbox from '../LootBox/LootBox'
+import CreateLootbox from '../CreateLootbox/CreateLootbox'
 
 export default class Dashboard extends React.Component {
     constructor(props) {
@@ -37,7 +38,7 @@ export default class Dashboard extends React.Component {
                 return lootboxes.json()
             })
             .then((lootboxes) => {
-                console.log(lootboxes, "lootbox list")
+                // console.log(lootboxes, "lootbox list")
                 
                 this.setState({
                     lootboxes: lootboxesByOwner(lootboxes, currentUser)
@@ -55,9 +56,10 @@ export default class Dashboard extends React.Component {
             
             return <li><Lootbox key={box.id} lootbox={box} /></li>
         })
-        console.log(pulledBoxes, "loot id czech")
+        // console.log(pulledBoxes, "loot id czech")
         return (
             <section className="users_lootboxes">
+                <CreateLootbox />
                 <h2>What's in the daaaaaaaaaash?!</h2>
                 <ul>
                     {userLootboxes}

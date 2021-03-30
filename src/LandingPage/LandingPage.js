@@ -16,7 +16,6 @@ export default class LandingPage extends React.Component {
                     <p>Inside you'll find curated lists of its users favorite anime and manga. Search our database of anime and manga to find titles by genre. Then, sign up to be able to save your selections to your personally styled Lootbox. Create a name and description for your Lootbox for other users to search and grow their collection!</p>
                 </div>
                 <SearchBar />
-                {/* <ResultBar /> */}
                 <Footer />
             </section>
         )
