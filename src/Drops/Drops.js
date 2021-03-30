@@ -8,9 +8,13 @@ export default class Drops extends React.Component {
         }
     }
     render() {
-        console.log(this.props, "drop props")
+        console.log(this.props.drop, "drop props")
+        const drop = this.props.drop
         return (
-            <p>What'd you drop?</p>
+            <div>
+                <h3>{drop.series_id}</h3>
+                <p>What'd you drop?</p>
+            </div>
         )
     }
 }
