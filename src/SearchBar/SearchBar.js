@@ -1,5 +1,4 @@
 import React from 'react'
-// import { textChangeRangeIsUnchanged } from 'typescript';
 import config from '../config';
 import ResultBar from '../ResultBar/ResultBar'
 import LootboxContext from '../LootboxContext'

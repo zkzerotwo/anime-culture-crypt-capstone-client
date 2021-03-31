@@ -1,7 +1,7 @@
 import React from 'react'
 // import LootBox from '../LootBox/LootBox'
 import LootboxContext from '../LootboxContext'
-// import Entry from '../Entry/Entry'
+import TokenService from '../services/token-service'
 import AddToLootbox from '../AddToLootbox/AddToLootbox'
 
 export default class ResultBar extends React.Component {
@@ -25,8 +25,7 @@ export default class ResultBar extends React.Component {
                         <p>{entry.title}</p>
                         <p>{entry.synopsis}</p>
                         <a href={entry.url}>Learn More</a>
-                        <h1>O</h1>
-                        <AddToLootbox entryType={this.props.seriesType} entryId={entry.mal_id} />
+                        {TokenService.hasAuthToken() ? <AddToLootbox entryType={this.props.seriesType} entryId={entry.mal_id} /> : ''}
                     </div>
                 </li>
             )
