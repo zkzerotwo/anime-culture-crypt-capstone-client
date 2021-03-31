@@ -142,7 +142,7 @@ export default class AddToLootbox extends React.Component {
         const dropName = this.state.dropName.value
         const dropDescription = this.state.dropDescription.value
         const boxId = this.state.lootboxId.value
-       
+
         fetch(entryUrl)
             .then(entryData => {
                 if (!entryData.ok) {
@@ -171,10 +171,34 @@ export default class AddToLootbox extends React.Component {
                     image_url: imageUrl
                 }
                 console.log(payload, "payload")
+                fetch(`${config.AUTH_ENDPOINT}/drops`, {
+                    method: 'POST',
+                    headers: {
+                        'content-type': 'application/json'
+                        // 'Authorization': `Bearer ${config.API_KEY}`
+                    },
+                    body: JSON.stringify(payload),
+                })
+                    .then((dropPost) => {
+                        // console.log(lootboxsRes)
+                        if (!dropPost.ok) {
+                            return dropPost.json().then(e => Promise.reject(e));
+                        }
+                        return dropPost.json()
+                    })
+                    .then((newLootbox) => {
+                        console.log(newLootbox)
+                        // this.context.addLootbox(newLootbox)
+                    })
+                    // .then(
+                    //     this.props.history.push('/')
+                    // )
+                    .catch(error => this.setState({ error }))
             })
             .catch(err => {
                 console.error(err);
             })
+
 
     }
     render() {
@@ -197,7 +221,7 @@ export default class AddToLootbox extends React.Component {
                 <h4>{this.props.entryId}</h4>
                 <div>
                     <label htmlFor='dropName'>
-                    dropName
+                        dropName
       {' '}
 
                     </label>
