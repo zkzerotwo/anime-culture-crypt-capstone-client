@@ -17,12 +17,12 @@ const characterSearchResults = {
             mal_id: 11,
             type: "manga",
             name: "Naruto",
-        url: "https://myanimelist.net/manga/11/Naruto"
+            url: "https://myanimelist.net/manga/11/Naruto"
         }
     ]
 }
 
-const personSearchResults= {
+const personSearchResults = {
     mal_id: 12,
     url: "https://myanimelist.net/people/12/Steven_Blum",
     image_url: "https://cdn.myanimelist.net/images/voiceactors/3/45741.jpg?s=b0976ca761b7ff6a5bc24ed4c1f6ed0a",
@@ -54,31 +54,68 @@ const mangaSearchResults = {
 }
 
 const animeSearchResults = {
-        mal_id: 813,
-        url: "https://myanimelist.net/anime/813/Dragon_Ball_Z",
-        image_url: "https://cdn.myanimelist.net/images/anime/6/20936.jpg?s=0f99859bc8ded1ec9dbd92619b831561",
-        title: "Dragon Ball Z",
-        airing: false,
-        synopsis: "Five years after winning the World Martial Arts tournament, Gokuu is now living a peaceful life with his wife and son. This changes, however, with the arrival of a mysterious enemy named Raditz who pr...",
-        type: "TV",
-        episodes: 291,
-        score: 8.15,
-        start_date: "1989-04-26T00:00:00+00:00",
-        end_date: "1996-01-31T00:00:00+00:00",
-        members: 910370,
-        rated: "PG-13"
-    }
+    mal_id: 813,
+    url: "https://myanimelist.net/anime/813/Dragon_Ball_Z",
+    image_url: "https://cdn.myanimelist.net/images/anime/6/20936.jpg?s=0f99859bc8ded1ec9dbd92619b831561",
+    title: "Dragon Ball Z",
+    airing: false,
+    synopsis: "Five years after winning the World Martial Arts tournament, Gokuu is now living a peaceful life with his wife and son. This changes, however, with the arrival of a mysterious enemy named Raditz who pr...",
+    type: "TV",
+    episodes: 291,
+    score: 8.15,
+    start_date: "1989-04-26T00:00:00+00:00",
+    end_date: "1996-01-31T00:00:00+00:00",
+    members: 910370,
+    rated: "PG-13"
+}
 
-    const postDbData = {
-        title: "",
-        url: "",
-        image_url: "",
-        synopsis: "",
-        episodes: "",
-        rating: "",
-        opening_themes: "",
-        ending_themes: "",
-        premiered: "",
-        status: "",
+const postDbDataAnime = {
+    mal_id: "",
+    drop_type: "",
+    title: "",
+    url: "",
+    image_url: "",
+    synopsis: "",
+    episodes: "",
+    opening_themes: "",
+    ending_themes: "",
+    premiered: "",
+    status: "",
+    lootbox_id: ""
+}
 
-    }
+const postDbDataManga = {
+    mal_id: "",
+    drop_type: "",
+    title: "",
+    title_english: "",
+    url: "",
+    image_url: "",
+    synopsis: "",
+    volumes: "",
+    chapters: "",
+    premiered: "",
+    status: "",
+    lootbox_id: ""
+}
+
+const postDbDatacharacter = {
+    man_id: "",
+    drop_type: "",
+    name: "",
+    url: "",
+    image_url: "",
+    about: "",
+    lootbox_id: ""
+
+}
+
+const dropIdentity = {
+    mal_id: "",
+    drop_type: "",
+    drop_name: "",
+    lootbox_id: "",
+    drop_description: "",
+    url: "",
+    image_url: "",
+}

@@ -21,8 +21,15 @@ export default class AddToLootbox extends React.Component {
                 value: '',
                 touched: false
             },
-            image_url: '',
-            
+            malId: '',
+            dropType: '',
+            dropName: {
+                value: '',
+                touched: false
+            },
+            referenceUrl: '',
+            imageUrl: ''
+
         }
     }
     static defaultProps = {
@@ -35,29 +42,66 @@ export default class AddToLootbox extends React.Component {
     }
     updateLootboxId = (lootboxId) => {
         this.setState({
-            lootbox: {
+            lootboxId: {
                 value: lootboxId,
                 touched: true
             }
         })
-        console.log(lootboxId)
+        // console.log(lootboxId)
     }
-    updateTitle = (title) => {
+    updateMalId = (select) => {
         this.setState({
-            title: {
-                value: title,
+            malId: {
+                value: select,
                 touched: true
             }
         })
+        // console.log(select)
     }
 
-    updateDescription = (description) => {
+    updateDropDescription = (description) => {
         this.setState({
-            description: {
+            dropDescription: {
                 value: description,
                 touched: true
             }
         })
+    }
+    updateDropName = (name) => {
+        this.setState({
+            dropName: {
+                value: name,
+                touched: true
+            }
+        })
+        // console.log(name)
+    }
+    updateDropType = (type) => {
+        this.setState({
+            dropType: {
+                value: type,
+                touched: true
+            }
+        })
+        // console.log(type)
+    }
+    updateUrl = (url) => {
+        this.setState({
+            referenceUrl: {
+                value: url,
+                touched: true
+            }
+        })
+        // console.log(url)
+    }
+    updateImageUrl = (imageUrl) => {
+        this.setState({
+            imageUrl: {
+                value: imageUrl,
+                touched: true
+            }
+        })
+        // console.log(imageUrl)
     }
     componentDidMount() {
         let currentUser = TokenService.getUserId();
@@ -69,9 +113,6 @@ export default class AddToLootbox extends React.Component {
         }
 
         let getUserLootboxesUrl = `${config.AUTH_ENDPOINT}/users/${currentUser}/lootboxes`
-        // let getDropsUrl = `${config.AUTH_ENDPOINT}/drops`
-        // let getDropsInLootboxes = `${config.AUTH_ENDPOINT}/${this.state.lootboxes.id}/saved`
-        // console.log(getDropsInLootboxes)
         fetch(getUserLootboxesUrl)
             .then((lootboxes) => {
                 if (!lootboxes.ok)
@@ -79,7 +120,7 @@ export default class AddToLootbox extends React.Component {
                 return lootboxes.json()
             })
             .then((lootboxes) => {
-                console.log(lootboxes, "lootbox list")
+                // console.log(lootboxes, "lootbox list")
 
                 this.setState({
                     lootboxes: lootboxes.lootboxes
@@ -92,12 +133,16 @@ export default class AddToLootbox extends React.Component {
 
     handleSubmit = (e) => {
         e.preventDefault();
-        console.log(this.props.entryId)
+        // console.log(this.props.entryId)
         const entryEndpoint = `${config.API_ENDPOINT_SAVE}`
         const seriesId = this.props.entryId
         const entryType = this.props.entryType
         const entryUrl = `${entryEndpoint}/${entryType}/${seriesId}`
-        console.log(entryUrl)
+        // console.log(entryUrl)
+        const dropName = this.state.dropName.value
+        const dropDescription = this.state.dropDescription.value
+        const boxId = this.state.lootboxId.value
+       
         fetch(entryUrl)
             .then(entryData => {
                 if (!entryData.ok) {
@@ -106,7 +151,26 @@ export default class AddToLootbox extends React.Component {
                 return entryData.json()
             })
             .then(entryData => {
-                console.log(entryData)
+                console.log(entryData, "entry data")
+                this.setState({
+                    malId: entryData.mal_id,
+                    referenceUrl: entryData.url,
+                    imageUrl: entryData.image_url
+                })
+                const selectedId = this.state.malId
+                const dropType = entryType
+                const referenceUrl = entryData.url
+                const imageUrl = entryData.image_url
+                let payload = {
+                    mal_id: selectedId,
+                    drop_type: dropType,
+                    drop_name: dropName,
+                    lootbox_id: boxId,
+                    drop_description: dropDescription,
+                    url: referenceUrl,
+                    image_url: imageUrl
+                }
+                console.log(payload, "payload")
             })
             .catch(err => {
                 console.error(err);
@@ -117,7 +181,7 @@ export default class AddToLootbox extends React.Component {
         // console.log(this.state.lootboxes, "data check")
         // console.log(this.props.entryId, "id check")
         const lootboxList = this.state.lootboxes.map(lootbox => {
-            console.log(lootbox.title)
+            // console.log(lootbox.title)
             return (
                 <option
                     key={lootbox.id}
@@ -131,29 +195,29 @@ export default class AddToLootbox extends React.Component {
             <div><form onSubmit={this.handleSubmit}>
 
                 <h4>{this.props.entryId}</h4>
-                {/* <div>
-                    <label htmlFor='series'>
-                        series
+                <div>
+                    <label htmlFor='dropName'>
+                    dropName
       {' '}
 
                     </label>
                     <input
                         type='text'
-                        title='series'
-                        id='series'
-                        placeholder='Title of your Lootbox'
-                        onChange={e => this.updateTitle(e.target.value)}
+                        title='dropName'
+                        id='dropName'
+                        placeholder='dropName'
+                        onChange={e => this.updateDropName(e.target.value)}
                         required
                     />
-                </div> */}
-                {/* {this.state.series.touched && (<ValidationError message={this.validateTitle()} />)} */}
+                </div>
+                {/* {this.state.dropName.touched && (<ValidationError message={this.validateDropName()} />)} */}
                 <label htmlFor="description">
                     Description
                 </label>
                 <textarea
                     id="description"
                     title="description"
-                    onChange={e => this.updateDescription(e.target.value)}
+                    onChange={e => this.updateDropDescription(e.target.value)}
                 ></textarea>
                 <label
                     htmlFor="lootboxes"
