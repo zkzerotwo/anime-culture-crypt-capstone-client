@@ -1,7 +1,6 @@
 import React from 'react'
 import config from '../config'
 import TokenService from '../services/token-service'
-import { lootboxesByOwner } from '../lootbox-handlers'
 import ValidationError from '../ValidationError'
 
 export default class AddToLootbox extends React.Component {

@@ -1,4 +1,5 @@
 import React from 'react'
+import config from '../config'
 
 export default class Drops extends React.Component {
     constructor(props) {
@@ -7,15 +8,46 @@ export default class Drops extends React.Component {
 
         }
     }
-    render() {
-        console.log(this.props.drop.img_url, "drop props")
-        const drop = this.props.drop
-        return (
-            <div>
-                <h3>{drop.drop_name}</h3>
-                <p>{drop.drop_description}</p>
-                <img alt={drop.drop_name} src={drop.image_url}/>
-            </div>
-        )
+    handleClickDelete = e => {
+        e.preventDefault()
+        const dropId = this.props.drop.id
+        // console.log(dropId, "delete id")
+        fetch(`${config.AUTH_ENDPOINT}/drops/${dropId}`, {
+            method: 'DELETE',
+            headers: {
+                'content-type': 'application/json'
+            },
+        })
+            .then(res => {
+                if (!res.ok)
+                    return res.json().then(e => Promise.reject(e))
+            })
+            .then(() => {
+                window.location = '/dashboard'
+                // this.context.deleteNote(noteId)
+                // this.props.onDeleteNote(noteId)
+            })
+            .catch(error => {
+                console.error({ error })
+            })
     }
+
+render() {
+    // console.log(this.props.drop.image_url, "drop props")
+    const drop = this.props.drop
+    return (
+        <div>
+            <h3>{drop.drop_name}</h3>
+            <p>{drop.drop_description}</p>
+            <img alt={drop.drop_name} src={drop.image_url} />
+            <button
+                className='drop_delete'
+                type='button'
+                onClick={this.handleClickDelete}>
+                {' '}
+        remove
+      </button>
+        </div>
+    )
+}
 }

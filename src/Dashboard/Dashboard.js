@@ -1,11 +1,11 @@
 import React from 'react'
 import config from '../config'
 import TokenService from '../services/token-service'
-import { getDropsForLootbox, findLootbox, lootboxesByOwner, dropsByLootbox } from '../lootbox-handlers'
-import { Link } from 'react-router-dom'
+// import { Link } from 'react-router-dom'
 import Lootbox from '../LootBox/LootBox'
 import CreateLootbox from '../CreateLootbox/CreateLootbox'
 import Navbar from '../NavBar/NavBar'
+import { getDropsForLootbox } from '../lootbox-handlers'
 
 export default class Dashboard extends React.Component {
     constructor(props) {
@@ -18,6 +18,19 @@ export default class Dashboard extends React.Component {
         match: {
             params: {}
         }
+    }
+    handleDeleteUser = (e) => {
+        let currentUser = TokenService.getUserId();
+        const deleteEndpoint = `${config.AUTH_ENDPOINT}/users/${currentUser}`
+        fetch(deleteEndpoint)
+            .then((user) => {
+                if (!user.ok)
+                    return user.json().then(e => Promise.reject(e));
+                return user.json()
+            })
+            .catch(
+                (error => this.setState({ error }))
+            )
     }
     componentDidMount() {
         let currentUser = TokenService.getUserId();
@@ -73,6 +86,13 @@ export default class Dashboard extends React.Component {
                 <ul className="lootboxes_list">
                     {userLootboxes}
                 </ul>
+                <button
+                    className='_delootboxete'
+                    type='button'
+                    onClick={this.handleClickDelete}>
+                    {' '}
+        Delete User
+      </button>
             </section>
         )
     }

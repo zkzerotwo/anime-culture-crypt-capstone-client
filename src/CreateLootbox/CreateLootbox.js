@@ -115,7 +115,9 @@ export default class CreateLootbox extends React.Component {
                 if (!lootboxsRes.ok) {
                     return lootboxsRes.json().then(e => Promise.reject(e));
                 }
+                window.location = '/dashboard'
                 return lootboxsRes.json()
+                
             })
             .then((newLootbox) => {
                 console.log(newLootbox)

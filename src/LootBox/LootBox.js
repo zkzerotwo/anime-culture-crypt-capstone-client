@@ -2,7 +2,6 @@ import React from 'react'
 import Drops from '../Drops/Drops'
 import TokenService from '../services/token-service'
 import config from '../config'
-import { lootboxesByOwner } from '../lootbox-handlers';
 
 export default class LootBox extends React.Component {
     constructor(props) {
@@ -51,7 +50,30 @@ export default class LootBox extends React.Component {
             .catch(error => this.setState({
                 error
             }))
-            console.log(this.state, "fetch check")
+            // console.log(this.state, "fetch check")
+    }
+    handleClickDelete = e => {
+        e.preventDefault()
+        const lootboxId = this.props.lootbox.id
+        console.log(lootboxId, "delete id")
+        fetch(`${config.AUTH_ENDPOINT}/lootboxes/${lootboxId}`, {
+            method: 'DELETE',
+            headers: {
+                'content-type': 'application/json'
+            },
+        })
+            .then(res => {
+                if (!res.ok)
+                    return res.json().then(e => Promise.reject(e))
+            })
+            .then(() => {
+                window.location = '/dashboard'
+                // this.context.deleteNote(noteId)
+                // this.props.onDeleteNote(noteId)
+            })
+            .catch(error => {
+                console.error({ error })
+            })
     }
     render() {
         console.log(this.state.drops, "drop check")
@@ -65,6 +87,13 @@ export default class LootBox extends React.Component {
         return (
             <section>
                 <p>{this.props.lootbox.title}</p>
+                <button
+                    className='_delootboxete'
+                    type='button'
+                    onClick={this.handleClickDelete}>
+                    {' '}
+        remove
+      </button>
                 <ul>
                     {dropRender}
                 </ul>
