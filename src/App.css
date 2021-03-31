@@ -3,9 +3,9 @@
 }
 
 .search-results {
-  display: block;
+  display: flex;
+  flex-direction: column;
   width: 100%;
-  list-style: none;
 }
 
 .nav {
@@ -35,9 +35,12 @@ li {
 }
 
 .entries {
-  width: 50%;
+  width: 100%;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  flex-wrap: nowrap;
+  overflow: auto;
+  list-style: none;
 }
 

@@ -13,7 +13,7 @@ export default class SearchBar extends React.Component {
             options: [
                 "anime", "manga", "person", "character"
             ],
-            searchConfig: '',
+            searchConfig: 'anime',
             searchResults: [],
             lootboxes: []
         }
@@ -113,7 +113,7 @@ export default class SearchBar extends React.Component {
                         <select
                             id="search-type"
                             name="search-type"
-                            defaultValue="anime"
+                            defaultValue={this.state.searchConfig}
                             onChange={e => this.updateSearchType(e.target.value)}>
                             {searchType}
                         </select>
