@@ -216,58 +216,60 @@ export default class AddToLootbox extends React.Component {
         })
         console.log(lootboxList, "list of lootboxes")
         return (
-            <div><form onSubmit={this.handleSubmit}>
+            <div>
+                <form onSubmit={this.handleSubmit}>
 
-                <h4>{this.props.entryId}</h4>
-                <div>
-                    <label htmlFor='dropName'>
-                        dropName
+                    <h4>{this.props.entryId}</h4>
+                    <div>
+                        <label htmlFor='dropName'>
+                            dropName
       {' '}
 
-                    </label>
-                    <input
-                        type='text'
-                        title='dropName'
-                        id='dropName'
-                        placeholder='dropName'
-                        onChange={e => this.updateDropName(e.target.value)}
-                        required
-                    />
-                </div>
-                {/* {this.state.dropName.touched && (<ValidationError message={this.validateDropName()} />)} */}
-                <label htmlFor="description">
-                    Description
-                </label>
-                <textarea
-                    id="description"
-                    title="description"
-                    onChange={e => this.updateDropDescription(e.target.value)}
-                ></textarea>
-                <label
-                    htmlFor="lootboxes"
-                >
-                    Save in *
                         </label>
-                <select
-                    id="lootboxes"
-                    name="lootboxes"
-                    onChange={e => this.updateLootboxId(e.target.value)}
-                    defaultValue="Select Lootbox"
-                >
-                    <option
-                        disabled
+                        <input
+                            type='text'
+                            title='dropName'
+                            id='dropName'
+                            placeholder='dropName'
+                            onChange={e => this.updateDropName(e.target.value)}
+                            required
+                        />
+                    </div>
+                    {/* {this.state.dropName.touched && (<ValidationError message={this.validateDropName()} />)} */}
+                    <label htmlFor="description">
+                        Description
+                </label>
+                    <textarea
+                        id="description"
+                        title="description"
+                        onChange={e => this.updateDropDescription(e.target.value)}
+                    ></textarea>
+                    <label
+                        htmlFor="lootboxes"
                     >
-                        Select Lootbox
+                        Save in *
+                        </label>
+                    <select
+                        id="lootboxes"
+                        name="lootboxes"
+                        onChange={e => this.updateLootboxId(e.target.value)}
+                        defaultValue="Select Lootbox"
+                    >
+                        <option
+                            disabled
+                        >
+                            Select Lootbox
                             </option>
-                    {lootboxList}
-                </select>
-                <button
-                    type='submit'
-                // disabled={this.validateTitle() || this.validateLootboxSelect()}
-                >
-                    Save
+                        {lootboxList}
+                    </select>
+                    <button
+                        type='submit'
+                    // disabled={this.validateTitle() || this.validateLootboxSelect()}
+                    >
+                        Save
     </button>
-            </form></div>
+                </form>
+            </div>
         )
     }
 }
