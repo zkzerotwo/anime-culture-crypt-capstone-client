@@ -40,33 +40,37 @@ export default class Dashboard extends React.Component {
             })
             .then((lootboxes) => {
                 console.log(lootboxes, "lootbox list")
-                
+
                 this.setState({
                     lootboxes: lootboxes.lootboxes
                     // lootboxesByOwner(lootboxes, currentUser)
                 })
-                
+
             })
             .catch(
                 (error => this.setState({ error }))
             )
-            console.log(this.state.lootboxes, "state check")
+        console.log(this.state.lootboxes, "state check")
     }
     render() {
-        
+
         const pulledBoxes = this.state.lootboxes
         // const userLootboxes = getDropsForLootbox(pulledBoxes, pulledBoxes.id).map(box => {
         const userLootboxes = pulledBoxes.map(box => {
             // console.log(box.id, "box check")
-            return <li><Lootbox key={box.id} lootbox={box} /></li>
+            return (
+                <li>
+                    <Lootbox key={box.id} lootbox={box} />
+                </li>
+            )
         })
         console.log(pulledBoxes, "loot id czech")
         return (
             <section className="users_lootboxes">
                 <Navbar />
-                <h2>What's in the daaaaaaaaaash?!</h2>
+                <h2>Cache Board</h2>
                 <CreateLootbox />
-                <ul>
+                <ul className="lootboxes_list">
                     {userLootboxes}
                 </ul>
             </section>

@@ -8,12 +8,13 @@ export default class Drops extends React.Component {
         }
     }
     render() {
-        console.log(this.props.drop, "drop props")
+        console.log(this.props.drop.img_url, "drop props")
         const drop = this.props.drop
         return (
             <div>
-                <h3>{drop.series_id}</h3>
-                <p>What'd you drop?</p>
+                <h3>{drop.drop_name}</h3>
+                <p>{drop.drop_description}</p>
+                <img alt={drop.drop_name} src={drop.image_url}/>
             </div>
         )
     }

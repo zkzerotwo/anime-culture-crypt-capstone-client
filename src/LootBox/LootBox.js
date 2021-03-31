@@ -51,20 +51,20 @@ export default class LootBox extends React.Component {
             .catch(error => this.setState({
                 error
             }))
-            // console.log(this.state, "fetch check")
+            console.log(this.state, "fetch check")
     }
     render() {
-        // console.log(this.state.drops, "drop check")
+        console.log(this.state.drops, "drop check")
         // console.log(this.props, "prop check")
         const lootboxDrops = this.state.drops
-        // console.log(lootboxDrops, "Second check")
+        console.log(lootboxDrops, "Second check")
         const dropRender = lootboxDrops.map(drop => {
             return <li><Drops key={drop.id} drop={drop} /></li>
         })
 
         return (
             <section>
-                <p>Feelin' Looty?</p>
+                <p>{this.props.lootbox.title}</p>
                 <ul>
                     {dropRender}
                 </ul>
