@@ -5,6 +5,7 @@ import { getDropsForLootbox, findLootbox, lootboxesByOwner, dropsByLootbox } fro
 import { Link } from 'react-router-dom'
 import Lootbox from '../LootBox/LootBox'
 import CreateLootbox from '../CreateLootbox/CreateLootbox'
+import Navbar from '../NavBar/NavBar'
 
 export default class Dashboard extends React.Component {
     constructor(props) {
@@ -27,7 +28,7 @@ export default class Dashboard extends React.Component {
             window.location = '/'
         }
 
-        let getUserLootboxesUrl = `${config.AUTH_ENDPOINT}/lootboxes`
+        let getUserLootboxesUrl = `${config.AUTH_ENDPOINT}/users/${currentUser}/lootboxes`
         // let getDropsUrl = `${config.AUTH_ENDPOINT}/drops`
         // let getDropsInLootboxes = `${config.AUTH_ENDPOINT}/${this.state.lootboxes.id}/saved`
         // console.log(getDropsInLootboxes)
@@ -38,29 +39,33 @@ export default class Dashboard extends React.Component {
                 return lootboxes.json()
             })
             .then((lootboxes) => {
-                // console.log(lootboxes, "lootbox list")
+                console.log(lootboxes, "lootbox list")
                 
                 this.setState({
-                    lootboxes: lootboxesByOwner(lootboxes, currentUser)
+                    lootboxes: lootboxes.lootboxes
+                    // lootboxesByOwner(lootboxes, currentUser)
                 })
+                
             })
             .catch(
                 (error => this.setState({ error }))
             )
+            console.log(this.state.lootboxes, "state check")
     }
     render() {
         
         const pulledBoxes = this.state.lootboxes
-        const userLootboxes = getDropsForLootbox(pulledBoxes, pulledBoxes.id).map(box => {
-        // const userLootboxes = this.state.lootboxes.map(box => {
-            
+        // const userLootboxes = getDropsForLootbox(pulledBoxes, pulledBoxes.id).map(box => {
+        const userLootboxes = pulledBoxes.map(box => {
+            // console.log(box.id, "box check")
             return <li><Lootbox key={box.id} lootbox={box} /></li>
         })
-        // console.log(pulledBoxes, "loot id czech")
+        console.log(pulledBoxes, "loot id czech")
         return (
             <section className="users_lootboxes">
-                <CreateLootbox />
+                <Navbar />
                 <h2>What's in the daaaaaaaaaash?!</h2>
+                <CreateLootbox />
                 <ul>
                     {userLootboxes}
                 </ul>

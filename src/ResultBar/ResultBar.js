@@ -1,6 +1,8 @@
 import React from 'react'
-import LootBox from '../LootBox/LootBox'
+// import LootBox from '../LootBox/LootBox'
 import LootboxContext from '../LootboxContext'
+import Entry from '../Entry/Entry'
+import AddToLootbox from '../AddToLootbox/AddToLootbox'
 
 export default class ResultBar extends React.Component {
     constructor(props) {
@@ -13,7 +15,7 @@ export default class ResultBar extends React.Component {
     
 
     render() {
-        console.log(this.props.results, "results props")
+        // console.log(this.props.results, "results props")
         const entries = this.props.results.map(entry => {
             return (
                 <li key={entry.mal_id}>
@@ -23,6 +25,7 @@ export default class ResultBar extends React.Component {
                         <p>{entry.synopsis}</p>
                         <a href={entry.url}>Learn More</a>
                         <h1>O</h1>
+                        <AddToLootbox />
                     </div>
                 </li>
             )
@@ -31,7 +34,7 @@ export default class ResultBar extends React.Component {
             <section className="search-results">
                 <p>RESULTS</p>
                 <ul className="entries">{entries}</ul>
-                <LootBox />
+                
             </section>
         )
     }

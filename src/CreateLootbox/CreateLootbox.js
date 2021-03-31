@@ -65,7 +65,7 @@ export default class CreateLootbox extends React.Component {
         if (!TokenService.hasAuthToken()) {
             window.location = '/'
         }
-        let getUserLootboxesUrl = `${config.AUTH_ENDPOINT}/lootboxes`
+        let getUserLootboxesUrl = `${config.AUTH_ENDPOINT}/users/${currentUser}/lootboxes`
         fetch(getUserLootboxesUrl)
             .then((lootboxes) => {
                 if (!lootboxes.ok)
@@ -73,7 +73,7 @@ export default class CreateLootbox extends React.Component {
                 return lootboxes.json()
             })
             .then((lootboxes) => {
-                console.log(lootboxes, "lootbox list")
+                // console.log(lootboxes, "lootbox list")
                 this.setOwner(currentUser)
                 this.setState({
                     lootboxes: lootboxesByOwner(lootboxes, currentUser),
@@ -138,7 +138,7 @@ export default class CreateLootbox extends React.Component {
     }
 
     render() {
-        console.log(this.state.lootboxes, this.state.owner.value, "Create loot check")
+        // console.log(this.state.lootboxes, this.state.owner.value, "Create loot check")
         // const lootboxList = this.context.lootboxes.map(lootbox => {
         //     return (
         //         <option key={lootbox.id} value={lootbox.id}>{lootbox.title}</option>

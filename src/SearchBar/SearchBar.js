@@ -93,7 +93,7 @@ export default class SearchBar extends React.Component {
                 )
             })
         // console.log(searchType, "checking search type")
-        console.log(this.state, "state check")
+        // console.log(this.state, "state check")
         return (
             <section className='search-bar'>
                 <form onSubmit={e => this.handleSubmit(e)}>

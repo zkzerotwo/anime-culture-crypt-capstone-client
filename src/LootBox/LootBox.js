@@ -8,7 +8,8 @@ export default class LootBox extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            drops: []
+            drops: [],
+            // lootboxes: []
         }
     }
     static defautProps = {
@@ -24,29 +25,39 @@ export default class LootBox extends React.Component {
         if (!TokenService.hasAuthToken()) {
             window.location = '/'
         }
+
         let getDropsInLootboxes = `${config.AUTH_ENDPOINT}/lootboxes/${this.props.lootbox.id}/saved`
+        let getUserLootboxesUrl = `${config.AUTH_ENDPOINT}/users/${currentUser}/lootboxes`
         // console.log(getDropsInLootboxes, "drop list url")
-        fetch(getDropsInLootboxes)
-            .then(drops => {
+        Promise.all([
+            fetch(getDropsInLootboxes),
+            fetch(getUserLootboxesUrl)
+        ])
+            .then(([drops, lootboxes]) => {
                 if (!drops.ok)
                     return drops.json().then(e => Promise.reject(e));
-                return drops.json()
+                if (!lootboxes.ok)
+                    return lootboxes.json().then(e => Promise.reject(e));
+                return Promise.all([drops.json(), lootboxes.json()])
             })
-            .then(drops => {
 
+            .then(([drops, lootboxes]) => {
+                // console.log(drops, "fetch check 1")
                 this.setState({
-                    drops: drops.drops
+                    drops: drops.drops,
+                    lootboxes: lootboxes
                 })
             })
             .catch(error => this.setState({
                 error
             }))
+            // console.log(this.state, "fetch check")
     }
     render() {
-        console.log(this.state, "drop check")
-
+        // console.log(this.state.drops, "drop check")
+        // console.log(this.props, "prop check")
         const lootboxDrops = this.state.drops
-        console.log(lootboxDrops, "Second check")
+        // console.log(lootboxDrops, "Second check")
         const dropRender = lootboxDrops.map(drop => {
             return <li><Drops key={drop.id} drop={drop} /></li>
         })

@@ -11,6 +11,6 @@ export default function ValidationError(props) {
     return <></>
 }
 
-ValidationError.propTypes = {
-    message: PropTypes.string,
-}
+// ValidationError.propTypes = {
+//     message: PropTypes.string,
+// }
