@@ -14,6 +14,7 @@ export default class SearchBar extends React.Component {
             options: [
                 "anime", "manga", "person", "character"
             ],
+            searchConfig: '',
             searchResults: [],
             lootboxes: []
         }
@@ -38,7 +39,7 @@ export default class SearchBar extends React.Component {
         this.formatQueryParams(this.state.query)
         const endpoint = `${config.API_ENDPOINT}`
         const pass = `${config.API_TOKEN}`
-        const query = this.state.searchType + "?" + this.formatQueryParams(this.state.query)
+        const query = this.state.searchConfig + "?" + this.formatQueryParams(this.state.query)
         // this.state.search
         const options = {
             "method": "GET",
@@ -71,7 +72,7 @@ export default class SearchBar extends React.Component {
     updateSearchType(type) {
         // console.log(type, "selected")
         this.setState({
-            searchType: type
+            searchConfig: type
         })
     }
     updateSearchQuery(find) {
@@ -86,6 +87,7 @@ export default class SearchBar extends React.Component {
     render() {
         // console.log(this.context, "context check")
         const resultsList = this.state.searchResults
+        const seriesType = this.state.searchConfig
         const searchType = this.state.options
             .map(select => {
                 return (
@@ -93,7 +95,7 @@ export default class SearchBar extends React.Component {
                 )
             })
         // console.log(searchType, "checking search type")
-        // console.log(this.state, "state check")
+        console.log(this.state, "state check")
         return (
             <section className='search-bar'>
                 <form onSubmit={e => this.handleSubmit(e)}>
@@ -122,7 +124,7 @@ export default class SearchBar extends React.Component {
                         Submit!
                     </button>
                 </form>
-                <ResultBar results={resultsList}/>
+                <ResultBar seriesType={seriesType} results={resultsList}/>
             </section>
         )
     }

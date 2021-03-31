@@ -21,6 +21,8 @@ export default class AddToLootbox extends React.Component {
                 value: '',
                 touched: false
             },
+            image_url: '',
+            
         }
     }
     static defaultProps = {
@@ -78,7 +80,7 @@ export default class AddToLootbox extends React.Component {
             })
             .then((lootboxes) => {
                 console.log(lootboxes, "lootbox list")
-                
+
                 this.setState({
                     lootboxes: lootboxes.lootboxes
                 })
@@ -87,66 +89,97 @@ export default class AddToLootbox extends React.Component {
                 (error => this.setState({ error }))
             )
     }
+
+    handleSubmit = (e) => {
+        e.preventDefault();
+        console.log(this.props.entryId)
+        const entryEndpoint = `${config.API_ENDPOINT_SAVE}`
+        const seriesId = this.props.entryId
+        const entryType = this.props.entryType
+        const entryUrl = `${entryEndpoint}/${entryType}/${seriesId}`
+        console.log(entryUrl)
+        fetch(entryUrl)
+            .then(entryData => {
+                if (!entryData.ok) {
+                    throw new Error('Something went wrong, please try again later.');
+                }
+                return entryData.json()
+            })
+            .then(entryData => {
+                console.log(entryData)
+            })
+            .catch(err => {
+                console.error(err);
+            })
+
+    }
     render() {
-        console.log(this.state.lootboxes, "data check")
+        // console.log(this.state.lootboxes, "data check")
+        // console.log(this.props.entryId, "id check")
         const lootboxList = this.state.lootboxes.map(lootbox => {
             console.log(lootbox.title)
             return (
-                <option key={lootbox.id} value={lootbox.id}>{lootbox.title}</option>
+                <option
+                    key={lootbox.id}
+                    value={lootbox.id}>
+                    {lootbox.title}
+                </option>
             )
         })
         console.log(lootboxList, "list of lootboxes")
         return (
             <div><form onSubmit={this.handleSubmit}>
-            <div>
-                <label htmlFor='series'>
-                    series
+
+                <h4>{this.props.entryId}</h4>
+                {/* <div>
+                    <label htmlFor='series'>
+                        series
       {' '}
 
+                    </label>
+                    <input
+                        type='text'
+                        title='series'
+                        id='series'
+                        placeholder='Title of your Lootbox'
+                        onChange={e => this.updateTitle(e.target.value)}
+                        required
+                    />
+                </div> */}
+                {/* {this.state.series.touched && (<ValidationError message={this.validateTitle()} />)} */}
+                <label htmlFor="description">
+                    Description
                 </label>
-                <input
-                    type='text'
-                    title='series'
-                    id='series'
-                    placeholder='Title of your Lootbox'
-                    onChange={e => this.updateTitle(e.target.value)}
-                    required
-                />
-            </div>
-            {this.state.series.touched && (<ValidationError message={this.validateTitle()} />)}
-            <label htmlFor="description">
-                Description
-                </label>
-            <textarea
-                id="description"
-                title="description"
-                onChange={e => this.updateDescription(e.target.value)}
-            ></textarea>
-            <label
-                        htmlFor="lootboxes"
-                    >
-                        Save in *
+                <textarea
+                    id="description"
+                    title="description"
+                    onChange={e => this.updateDescription(e.target.value)}
+                ></textarea>
+                <label
+                    htmlFor="lootboxes"
+                >
+                    Save in *
                         </label>
-                    <select
-                        id="lootboxes"
-                        name="lootboxes"
-                        onChange={e => this.updateLootboxId(e.target.value)}
-                        defaultValue="Select Lootbox"
+                <select
+                    id="lootboxes"
+                    name="lootboxes"
+                    onChange={e => this.updateLootboxId(e.target.value)}
+                    defaultValue="Select Lootbox"
+                >
+                    <option
+                        disabled
                     >
-                        <option
-                            disabled
-                        >
-                            Select Lootbox
+                        Select Lootbox
                             </option>
-                        {lootboxList}
-                    </select>
-            <button
-                type='submit'
-            // disabled={this.validateTitle() || this.validateLootboxSelect()}
-            >
-                Save
+                    {lootboxList}
+                </select>
+                <button
+                    type='submit'
+                // disabled={this.validateTitle() || this.validateLootboxSelect()}
+                >
+                    Save
     </button>
-        </form></div>
+            </form></div>
         )
     }
 }

@@ -68,3 +68,17 @@ const animeSearchResults = {
         members: 910370,
         rated: "PG-13"
     }
+
+    const postDbData = {
+        title: "",
+        url: "",
+        image_url: "",
+        synopsis: "",
+        episodes: "",
+        rating: "",
+        opening_themes: "",
+        ending_themes: "",
+        premiered: "",
+        status: "",
+
+    }
