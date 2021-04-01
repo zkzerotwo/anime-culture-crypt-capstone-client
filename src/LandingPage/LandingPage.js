@@ -31,12 +31,12 @@ export default class LandingPage extends React.Component {
                 </div>
                 
                 
-                {this.state.barToggle ? <> <SearchBar /> <button onClick={() => this.toggleSearchBar()}>
-                    Search Lootboxes
-                </button> </> : <> <LootboxSearchBar />
+                {this.state.barToggle ? <> <LootboxSearchBar />
                 <button onClick={() => this.toggleSearchBar()}>
                     Search myAnimeList
-                </button> </>
+                </button> </> :<> <SearchBar /> <button onClick={() => this.toggleSearchBar()}>
+                    Search Lootboxes
+                </button> </> 
                 }
 
                 <Footer />

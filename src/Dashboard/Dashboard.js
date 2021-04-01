@@ -82,7 +82,7 @@ export default class Dashboard extends React.Component {
             .catch(
                 (error => this.setState({ error }))
             )
-        console.log(this.state.lootboxes, "state check")
+        // console.log(this.state.lootboxes, "state check")
     }
     render() {
 
@@ -96,7 +96,7 @@ export default class Dashboard extends React.Component {
                 </li>
             )
         })
-        console.log(pulledBoxes, "loot id czech")
+        // console.log(pulledBoxes, "loot id czech")
         return (
             <section className="users_lootboxes">
                 <Navbar />

@@ -36,7 +36,7 @@ render() {
     // console.log(this.props.drop.image_url, "drop props")
     const drop = this.props.drop
     return (
-        <div>
+        <div className="drop_list">
             <h3>{drop.drop_name}</h3>
             <p>{drop.drop_description}</p>
             <img alt={drop.drop_name} src={drop.image_url} />
@@ -45,7 +45,7 @@ render() {
                 type='button'
                 onClick={this.handleClickDelete}>
                 {' '}
-        remove
+        Delete Drop
       </button>
         </div>
     )

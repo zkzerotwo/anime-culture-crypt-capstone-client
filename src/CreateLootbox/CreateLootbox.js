@@ -151,7 +151,7 @@ export default class CreateLootbox extends React.Component {
                 <form onSubmit={this.handleSubmit}>
                     <div>
                         <label htmlFor='lootboxTitle'>
-                            Lootbox Title
+                            Create a New Lootbox
               {' '}
 
                         </label>
@@ -159,18 +159,19 @@ export default class CreateLootbox extends React.Component {
                             type='text'
                             title='lootboxTitle'
                             id='lootboxTitle'
-                            placeholder='Title of your Lootbox'
+                            placeholder='Lootbox Title'
                             onChange={e => this.updateTitle(e.target.value)}
                             required
                         />
                     </div>
                     {this.state.title.touched && (<ValidationError message={this.validateTitle()} />)}
                     <label htmlFor="description">
-                        Description
+                        Lootbox Description
                         </label>
                     <textarea
                         id="description"
                         title="description"
+                        placeholder="What makes this collection special?"
                         onChange={e => this.updateDescription(e.target.value)}
                     ></textarea>
                     <button

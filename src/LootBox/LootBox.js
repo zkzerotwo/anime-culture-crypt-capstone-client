@@ -50,7 +50,7 @@ export default class LootBox extends React.Component {
             .catch(error => this.setState({
                 error
             }))
-            // console.log(this.state, "fetch check")
+        // console.log(this.state, "fetch check")
     }
     handleClickDelete = e => {
         e.preventDefault()
@@ -85,18 +85,19 @@ export default class LootBox extends React.Component {
         })
 
         return (
-            <section>
-                <p>{this.props.lootbox.title}</p>
+            <section className="lootbox_display">
+                <h3>{this.props.lootbox.title}</h3>
+                <ul id="lootbox_drops">
+                    {dropRender}
+                </ul>
                 <button
-                    className='_delootboxete'
+                    className='delete_lootbox'
                     type='button'
                     onClick={this.handleClickDelete}>
                     {' '}
-        remove
+        Delete Lootbox
       </button>
-                <ul>
-                    {dropRender}
-                </ul>
+
             </section>
         )
     }

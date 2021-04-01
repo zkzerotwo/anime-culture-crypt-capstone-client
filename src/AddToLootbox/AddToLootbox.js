@@ -27,8 +27,8 @@ export default class AddToLootbox extends React.Component {
                 touched: false
             },
             referenceUrl: '',
-            imageUrl: ''
-
+            imageUrl: '',
+            isAdded: false
         }
     }
     static defaultProps = {
@@ -221,7 +221,7 @@ export default class AddToLootbox extends React.Component {
                     <h4>{this.props.entryId}</h4>
                     <div className="drop_setup">
                         <label htmlFor='dropName'>
-                            Create Drop
+                            Drop Nickname
       {' '}
                         </label>
                         <input

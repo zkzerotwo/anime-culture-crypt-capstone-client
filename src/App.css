@@ -50,7 +50,11 @@ input[id=dropName] {
 }
 
 textarea {
-  width: 95%
+  width: 95%;
+  border-width: 2px;
+  border-style: ridge;
+  border-color: silver;
+  display: block;
 }
  
 select {
@@ -67,6 +71,10 @@ button {
   border-color: silver;
   padding: 15px;
   margin: 5px;
+}
+
+button.delete_lootbox {
+  margin: auto
 }
 
 hr {
@@ -91,12 +99,31 @@ li {
   list-style: none;
 }
 
+/* dashboard lootbox display */
+section.lootbox_display {
+  display: flex;
+  flex-direction: column;
+}
+
 div.drop_setup {
   display: flex;
   flex-direction: column;
 }
 
+ul#lootbox_drops {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  /* align-items:flex-end; */
+  flex-wrap: nowrap;
+  overflow: auto;
+  list-style: none;
+}
 
-
+ul#lootbox_drops li {
+  display: block;
+  width: 18%;
+}
 
 
