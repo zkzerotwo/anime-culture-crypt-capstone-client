@@ -12,6 +12,7 @@ export default class Dashboard extends React.Component {
         super(props);
         this.state = {
             lootboxes: [],
+            youSure: false
         }
     }
     static defautProps = {
@@ -19,10 +20,29 @@ export default class Dashboard extends React.Component {
             params: {}
         }
     }
+    deleteWarning = (e) => {
+        const justChecking = this.state.youSure
+        if (justChecking === false) {
+            this.setState({
+                youSure: true
+            })
+        }
+        this.setState({
+            youSure: false
+        })
+    }
     handleDeleteUser = (e) => {
         let currentUser = TokenService.getUserId();
+        TokenService.clearAuthToken()
+        window.location = '/'
+
         const deleteEndpoint = `${config.AUTH_ENDPOINT}/users/${currentUser}`
-        fetch(deleteEndpoint)
+        fetch(deleteEndpoint, {
+            method: 'DELETE',
+            headers: {
+                'content-type': 'application/json'
+            }
+        })
             .then((user) => {
                 if (!user.ok)
                     return user.json().then(e => Promise.reject(e));
@@ -40,7 +60,6 @@ export default class Dashboard extends React.Component {
         if (!TokenService.hasAuthToken()) {
             window.location = '/'
         }
-
         let getUserLootboxesUrl = `${config.AUTH_ENDPOINT}/users/${currentUser}/lootboxes`
         // let getDropsUrl = `${config.AUTH_ENDPOINT}/drops`
         // let getDropsInLootboxes = `${config.AUTH_ENDPOINT}/${this.state.lootboxes.id}/saved`
@@ -89,7 +108,7 @@ export default class Dashboard extends React.Component {
                 <button
                     className='_delootboxete'
                     type='button'
-                    onClick={this.handleClickDelete}>
+                    onClick={(e) => { if (window.confirm('Are you sure you want to delete your account?')) { this.handleDeleteUser(e) }; }}>
                     {' '}
         Delete User
       </button>

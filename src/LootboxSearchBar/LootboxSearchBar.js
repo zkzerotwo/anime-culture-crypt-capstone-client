@@ -2,12 +2,13 @@ import React from 'react'
 import config from '../config';
 import ResultBar from '../ResultBar/ResultBar'
 
-export default class SearchBar extends React.Component {
+export default class LootboxSearchBar extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
             query: {
-                q: ""
+               value: '',
+               touched: false
             },
             options: [
                 "anime", "manga", "person", "character"
@@ -33,21 +34,20 @@ export default class SearchBar extends React.Component {
             searchResults: []
         })
         this.formatQueryParams(this.state.query)
-        const endpoint = `${config.API_ENDPOINT}`
-        const pass = `${config.API_TOKEN}`
-        const query = this.state.searchConfig + "?" + this.formatQueryParams(this.state.query)
+        const endpoint = `${config.AUTH_ENDPOINT}`
+        // const pass = `${config.API_TOKEN}`
+        const query = this.state.query.value
         // this.state.search
-        const options = {
-            "method": "GET",
-            "headers": {
-                "x-rapidapi-key": pass,
-                "x-rapidapi-host": "jikan1.p.rapidapi.com"
-            }
-        }
+        // const options = {
+        //     "method": "GET",
+        //     "headers": {
+        //         "x-rapidapi-key": pass,
+        //         "x-rapidapi-host": "jikan1.p.rapidapi.com"
+        //     }
+        // }
         const fullUrl = endpoint + query
-        console.log(fullUrl, pass, "url check")
-        fetch(fullUrl,
-            options)
+        console.log(fullUrl, "url check")
+        fetch(fullUrl)
             .then(response => {
                 if (!response.ok) {
                     throw new Error('Something went wrong, please try again later.');
@@ -84,12 +84,12 @@ export default class SearchBar extends React.Component {
         // console.log(this.context, "context check")
         const resultsList = this.state.searchResults
         const seriesType = this.state.searchConfig
-        const searchType = this.state.options
-            .map(select => {
-                return (
-                    <option key={select.toString()} value={select}>{select}</option>
-                )
-            })
+        // const searchType = this.state.options
+        //     .map(select => {
+        //         return (
+        //             <option key={select.toString()} value={select}>{select}</option>
+        //         )
+        //     })
         // console.log(searchType, "checking search type")
         console.log(this.state, "state check")
         return (
@@ -99,12 +99,12 @@ export default class SearchBar extends React.Component {
                         <input type='text'
                             id='search'
                             name='search'
-                            placeholder='Search by keyword or genre'
+                            placeholder='Search by keyword'
                             onChange={e => this.updateSearchQuery(e.target.value)}
                             required
                         ></input>
                     </label>
-                    <label
+                    {/* <label
                         htmlFor="search-type"
                     >
                         <select
@@ -114,7 +114,7 @@ export default class SearchBar extends React.Component {
                             onChange={e => this.updateSearchType(e.target.value)}>
                             {searchType}
                         </select>
-                    </label>
+                    </label> */}
                     <p>Hey there!</p>
                     <button>
                         Submit!
