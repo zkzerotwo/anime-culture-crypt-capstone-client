@@ -17,21 +17,68 @@
 }
 
 .intro-card {
+  border-width: 2px;
+  border-style: ridge;
+  border-color: silver;
   display: block;
   width: 50%;
   margin: auto;
 }
 
-input[type=text] {
-  width: 50%;
-  border-radius: 5px;
+form.loginForm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+input {
+  border-width: 2px;
+  border-style: ridge;
+  border-color: silver;
+  padding: 15px;
+  margin: 5px;
+  width: 35%;
+}
+
+input[id=dropName] {
+  border-width: 2px;
+  border-style: ridge;
+  border-color: silver;
+  padding: 15px;
+  margin: 5px;
+  width: 95%;
+}
+
+textarea {
+  width: 95%
+}
+ 
+select {
+  padding: 15px;
+  margin: 5px;
+  border-width: 2px;
+  border-style: ridge;
+  border-color: silver;
+}
+
+button {
+  border-width: 2px;
+  border-style: ridge;
+  border-color: silver;
+  padding: 15px;
+  margin: 5px;
+}
+
+hr {
+  width: 75%;
+  border-top: 5px;
+  color: silver;
+  margin: auto;
 }
 
 li {
   margin: 15px;
   padding: 10px;
-
-  
 }
 
 .entries {
@@ -43,4 +90,13 @@ li {
   overflow: auto;
   list-style: none;
 }
+
+div.drop_setup {
+  display: flex;
+  flex-direction: column;
+}
+
+
+
+
 

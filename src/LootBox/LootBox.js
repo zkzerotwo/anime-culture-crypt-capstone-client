@@ -21,9 +21,9 @@ export default class LootBox extends React.Component {
         // console.log(currentUser, "user id")
         // console.log(this.props.lootbox, "lootbox id")
         //if the user is not logged in, send him to landing page
-        if (!TokenService.hasAuthToken()) {
-            window.location = '/'
-        }
+        // if (!TokenService.hasAuthToken()) {
+        //     window.location = '/'
+        // }
 
         let getDropsInLootboxes = `${config.AUTH_ENDPOINT}/lootboxes/${this.props.lootbox.id}/saved`
         let getUserLootboxesUrl = `${config.AUTH_ENDPOINT}/users/${currentUser}/lootboxes`
@@ -76,10 +76,10 @@ export default class LootBox extends React.Component {
             })
     }
     render() {
-        console.log(this.state.drops, "drop check")
+        // console.log(this.state.drops, "drop check")
         // console.log(this.props, "prop check")
         const lootboxDrops = this.state.drops
-        console.log(lootboxDrops, "Second check")
+        // console.log(lootboxDrops, "Second check")
         const dropRender = lootboxDrops.map(drop => {
             return <li><Drops key={drop.id} drop={drop} /></li>
         })

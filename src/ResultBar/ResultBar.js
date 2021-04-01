@@ -12,11 +12,11 @@ export default class ResultBar extends React.Component {
         }
     }
     static contextType = LootboxContext
-    
+
 
     render() {
         // console.log(this.props.results, "results props")
-        
+
         const entries = this.props.results.map(entry => {
             return (
                 <li key={entry.mal_id}>
@@ -32,9 +32,10 @@ export default class ResultBar extends React.Component {
         })
         return (
             <section className="search-results">
-                <p>RESULTS</p>
+                <h3>RESULTS</h3>
+                <hr />
                 <ul className="entries">{entries}</ul>
-                
+
             </section>
         )
     }

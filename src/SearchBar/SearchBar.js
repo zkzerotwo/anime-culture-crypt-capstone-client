@@ -97,8 +97,9 @@ export default class SearchBar extends React.Component {
                 <form onSubmit={e => this.handleSubmit(e)}>
                     <label>
                         <input type='text'
-                            id='search'
-                            name='search'
+                            id='api_search'
+                            className="api_search"
+                            name='api_search'
                             placeholder='Search by keyword or genre'
                             onChange={e => this.updateSearchQuery(e.target.value)}
                             required
@@ -115,7 +116,6 @@ export default class SearchBar extends React.Component {
                             {searchType}
                         </select>
                     </label>
-                    <p>Hey there!</p>
                     <button>
                         Submit!
                     </button>

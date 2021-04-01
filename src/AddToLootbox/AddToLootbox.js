@@ -150,7 +150,7 @@ export default class AddToLootbox extends React.Component {
                 return entryData.json()
             })
             .then(entryData => {
-                console.log(entryData, "entry data")
+                // console.log(entryData, "entry data")
                 this.setState({
                     malId: entryData.mal_id,
                     referenceUrl: entryData.url,
@@ -169,7 +169,7 @@ export default class AddToLootbox extends React.Component {
                     url: referenceUrl,
                     image_url: imageUrl
                 }
-                console.log(payload, "payload")
+                // console.log(payload, "payload")
                 fetch(`${config.AUTH_ENDPOINT}/drops`, {
                     method: 'POST',
                     headers: {
@@ -219,17 +219,16 @@ export default class AddToLootbox extends React.Component {
                 <form onSubmit={this.handleSubmit}>
 
                     <h4>{this.props.entryId}</h4>
-                    <div>
+                    <div className="drop_setup">
                         <label htmlFor='dropName'>
-                            dropName
+                            Create Drop
       {' '}
-
                         </label>
                         <input
                             type='text'
                             title='dropName'
                             id='dropName'
-                            placeholder='dropName'
+                            placeholder='Name your drop'
                             onChange={e => this.updateDropName(e.target.value)}
                             required
                         />
@@ -241,13 +240,15 @@ export default class AddToLootbox extends React.Component {
                     <textarea
                         id="description"
                         title="description"
+                        placeholder="Add a personal description for this drop"
                         onChange={e => this.updateDropDescription(e.target.value)}
-                    ></textarea>
+                    >
+                    </textarea>
                     <label
                         htmlFor="lootboxes"
                     >
                         Save in *
-                        </label>
+                        
                     <select
                         id="lootboxes"
                         name="lootboxes"
@@ -261,6 +262,7 @@ export default class AddToLootbox extends React.Component {
                             </option>
                         {lootboxList}
                     </select>
+                    </label>
                     <button
                         type='submit'
                     // disabled={this.validateTitle() || this.validateLootboxSelect()}

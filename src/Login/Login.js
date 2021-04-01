@@ -1,5 +1,5 @@
-  
 import React from "react"
+import NavBar from '../NavBar/NavBar'
 import ValidationError from "../ValidationError"
 import AuthApiService from '../services/auth-api-service'
 import TokenService from '../services/token-service'
@@ -40,7 +40,7 @@ class Login extends React.Component {
             return "Username is required"
         } else if (userName.length < 2) {
             return (
-                    "Username must be at least 2 characters long"
+                "Username must be at least 2 characters long"
             );
         }
     }
@@ -51,12 +51,12 @@ class Login extends React.Component {
             return <p className="input-error">Password is required</p>;
         } else if (password.length < 6 || password.length > 72) {
             return (
-                    "Password must be between 6 and 72 characters long."
+                "Password must be between 6 and 72 characters long."
             );
         } else if (!password.match(/[0-9]/)) {
             return (
 
-                    "Password must contain at least one number."
+                "Password must contain at least one number."
 
             );
         }
@@ -72,94 +72,98 @@ class Login extends React.Component {
         })
 
             .then((response) => {
-               // console.log("response ID", response);
+                // console.log("response ID", response);
 
                 TokenService.saveAuthToken(response.authToken);
                 TokenService.saveUserId(response.userId);
-                window.location = "/dashboard/";
+                
             })
             .catch((err) => {
                 this.setState({
-            error: "Username or password is invalid"
+                    error: "Username or password is invalid"
                 })
                 // console.log(err);
             });
+            window.location = "/dashboard/";
     };
 
     render() {
-        // const msg = this.state.error ? <p>
-        //     {this.state.error}
-        // </p>:
-        <div></div>;
+        const msg = this.state.error ? <p>
+            {this.state.error}
+        </p> :
+            <div></div>;
         return (
-            <div className="Login">
-                <section id="loginPage">
-                    <h2>Login</h2>
-                    <p className = "demo">To view a demo:</p>
-                    <p className = "demo">email: demo@gmail.com</p>
-                    <p className = "demo">password: Password1</p>
+            <section>
+                <NavBar />
+                <div className="Login">
+                    <section id="loginPage">
+                        <h2>Login</h2>
+                        <p className="demo">To view a demo:</p>
+                        <p className="demo">email: demo@gmail.com</p>
+                        <p className="demo">password: Password1</p>
 
-                    <form className="loginForm" onSubmit={this.loginUser}>
-                    <div className = "errorMessage">
-                        {/* {msg} */}
-                    </div>
-                        <label htmlFor="userName">Username</label>
-                        <input
-                            type="text"
-                            id="userName"
-                            name="userName"
-                            placeholder="Username"
-                            onChange={(e) =>
-                                this.changeUsername(e.target.value)
-                            }
-                            required
-                        />
-                        {this.state.userName.touched && (
+                        <form className="loginForm" onSubmit={this.loginUser}>
+                            <div className="errorMessage">
+                                {msg}
+                            </div>
+                            <label htmlFor="userName">Username</label>
+                            <input
+                                type="text"
+                                id="userName"
+                                name="userName"
+                                placeholder="Username"
+                                onChange={(e) =>
+                                    this.changeUsername(e.target.value)
+                                }
+                                required
+                            />
+                            {this.state.userName.touched && (
+                                <ValidationError
+                                    message={this.validateUserName()}
+                                />
+                            )}
                             <ValidationError
                                 message={this.validateUserName()}
                             />
-                        )}
-                        <ValidationError
-                                message={this.validateUserName()}
+                            <label htmlFor="password">Password</label>
+                            <input
+                                type="Password"
+                                id="password"
+                                name="password"
+                                placeholder="Password"
+                                onChange={(e) =>
+                                    this.changePassword(e.target.value)
+                                }
+                                required
                             />
-                        <label htmlFor="password">Password</label>
-                        <input
-                            type="Password"
-                            id="password"
-                            name="password"
-                            placeholder="Password"
-                            onChange={(e) =>
-                                this.changePassword(e.target.value)
-                            }
-                            required
-                        />
-                        {this.state.password.touched && (
+                            {this.state.password.touched && (
+                                <ValidationError
+                                    message={this.validatePassword()}
+                                />
+                            )}
                             <ValidationError
                                 message={this.validatePassword()}
                             />
-                        )}
-                        <ValidationError
-                                message={this.validatePassword()}
-                            />
 
 
-                        <button
-                            className="go-button"
-                            type="submit"
-                        >
-                            Go
+                            <button
+                                className="go-button"
+                                type="submit"
+                            >
+                                Go
                         </button>
-                        <div className="signUp">
-                            <p>
-                                Do not have an account?{" "}
-                            </p>
-                            <p>
-                            <NavLink to='/register'>Sign up here</NavLink>
-                            </p>
-                        </div>
-                    </form>
-                </section>
-            </div>
+                            <div className="signUp">
+                                <p>
+                                    Don't have an account?{" "}
+                                </p>
+                                <p>
+                                    <NavLink to='/register'>Sign up here</NavLink>
+                                </p>
+                            </div>
+                        </form>
+                    </section>
+                </div>
+            </section>
         );
     }
 }

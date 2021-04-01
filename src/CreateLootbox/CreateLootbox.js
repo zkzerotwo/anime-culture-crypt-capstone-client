@@ -62,9 +62,9 @@ export default class CreateLootbox extends React.Component {
         console.log(currentUser, "user id")
 
         //if the user is not logged in, send him to landing page
-        if (!TokenService.hasAuthToken()) {
-            window.location = '/'
-        }
+        // if (!TokenService.hasAuthToken()) {
+        //     window.location = '/'
+        // }
         let getUserLootboxesUrl = `${config.AUTH_ENDPOINT}/users/${currentUser}/lootboxes`
         fetch(getUserLootboxesUrl)
             .then((lootboxes) => {

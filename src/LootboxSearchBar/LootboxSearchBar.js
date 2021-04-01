@@ -7,25 +7,14 @@ export default class LootboxSearchBar extends React.Component {
         super(props);
         this.state = {
             query: {
-               value: '',
-               touched: false
+                value: '',
+                touched: false
             },
-            options: [
-                "anime", "manga", "person", "character"
-            ],
-            searchConfig: 'anime',
             searchResults: [],
             lootboxes: []
         }
     }
     static defaultProps = {
-    }
-
-    formatQueryParams(params) {
-        console.log(params, "queryczech")
-        const queryItems = Object.keys(params)
-            .map(key => `${encodeURIComponent(key)}=${encodeURIComponent(params[key])}`)
-        return queryItems.join('&');
     }
     handleSubmit(e) {
         e.preventDefault();
@@ -33,10 +22,9 @@ export default class LootboxSearchBar extends React.Component {
         this.setState({
             searchResults: []
         })
-        this.formatQueryParams(this.state.query)
-        const endpoint = `${config.AUTH_ENDPOINT}`
+        // const endpoint = `${config.AUTH_ENDPOINT}`
         // const pass = `${config.API_TOKEN}`
-        const query = this.state.query.value
+        // const query = this.state.query.value
         // this.state.search
         // const options = {
         //     "method": "GET",
@@ -45,8 +33,8 @@ export default class LootboxSearchBar extends React.Component {
         //         "x-rapidapi-host": "jikan1.p.rapidapi.com"
         //     }
         // }
-        const fullUrl = endpoint + query
-        console.log(fullUrl, "url check")
+        const fullUrl = `${config.AUTH_ENDPOINT}/lootboxes`
+        // console.log(fullUrl, "url check")
         fetch(fullUrl)
             .then(response => {
                 if (!response.ok) {
@@ -56,9 +44,9 @@ export default class LootboxSearchBar extends React.Component {
             })
             .then(response => response.json())
             .then(response => {
-                console.log(response.results, "response")
+                // console.log(response, "fetch response")
                 this.setState({
-                    searchResults: response.results
+                    searchResults: response
                 })
             })
             .catch(err => {
@@ -75,31 +63,35 @@ export default class LootboxSearchBar extends React.Component {
         // console.log(find, "queryCheck1")
         this.setState({
             query: {
-                q: find
+                value: find
             }
 
         })
+        // console.log(this.state, "state check loot search")
     }
     render() {
         // console.log(this.context, "context check")
-        const resultsList = this.state.searchResults
+        const fliterTheseResults = this.state.searchResults
         const seriesType = this.state.searchConfig
-        // const searchType = this.state.options
-        //     .map(select => {
-        //         return (
-        //             <option key={select.toString()} value={select}>{select}</option>
-        //         )
-        //     })
-        // console.log(searchType, "checking search type")
-        console.log(this.state, "state check")
+        const filter = this.state.query.value.toLowerCase()
+        const resultsList = fliterTheseResults.filter(searchKey => {
+            //  console.log(searchKey.description)
+            return searchKey.description.includes(filter)
+            // ||
+            // searchKey.name
+
+        })
+        // console.log(this.state.searchResults, "state check")
+        console.log(resultsList, "filtered array")
         return (
             <section className='search-bar'>
                 <form onSubmit={e => this.handleSubmit(e)}>
                     <label>
                         <input type='text'
-                            id='search'
-                            name='search'
-                            placeholder='Search by keyword'
+                            id='lootbox_search'
+                            name='lootbox_search'
+                            className='lootbox_search'
+                            placeholder='Search through lootboxes by keyword'
                             onChange={e => this.updateSearchQuery(e.target.value)}
                             required
                         ></input>
@@ -115,12 +107,11 @@ export default class LootboxSearchBar extends React.Component {
                             {searchType}
                         </select>
                     </label> */}
-                    <p>Hey there!</p>
                     <button>
                         Submit!
                     </button>
                 </form>
-                <ResultBar seriesType={seriesType} results={resultsList}/>
+                <ResultBar seriesType={seriesType} results={resultsList} />
             </section>
         )
     }
