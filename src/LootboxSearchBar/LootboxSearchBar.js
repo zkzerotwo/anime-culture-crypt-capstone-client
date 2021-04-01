@@ -35,7 +35,13 @@ export default class LootboxSearchBar extends React.Component {
         // }
         const fullUrl = `${config.AUTH_ENDPOINT}/lootboxes`
         // console.log(fullUrl, "url check")
-        fetch(fullUrl)
+        fetch(fullUrl, {
+            method: 'GET',
+            headers: {
+                'content-type': 'application/json',
+                'Authorization': `${config.APP_API_TOKEN}`
+            }
+        })
             .then(response => {
                 if (!response.ok) {
                     throw new Error('Something went wrong, please try again later.');
@@ -75,10 +81,11 @@ export default class LootboxSearchBar extends React.Component {
         const seriesType = this.state.searchConfig
         const filter = this.state.query.value.toLowerCase()
         const resultsList = fliterTheseResults.filter(searchKey => {
-            //  console.log(searchKey.description)
-            return searchKey.description.includes(filter)
-            // ||
-            // searchKey.name
+             console.log(searchKey.description, "lootboxes desc")
+             console.log(filter, "filter")
+            let filteredResults = searchKey.description.toLowerCase().includes(filter)
+            // console.log(filteredResults)
+            return filteredResults
 
         })
         // console.log(this.state.searchResults, "state check")

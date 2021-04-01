@@ -98,20 +98,20 @@ export default class CreateLootbox extends React.Component {
             description: description,
             box_owner: owner
         }
-        console.log(payload)
+        // console.log(payload)
         this.setState({
             error: null
         })
         fetch(`${config.AUTH_ENDPOINT}/lootboxes`, {
             method: 'POST',
             headers: {
-                'content-type': 'application/json'
-                // 'Authorization': `Bearer ${config.API_KEY}`
+                'content-type': 'application/json',
+                'Authorization': `${config.APP_API_TOKEN}`
             },
             body: JSON.stringify(payload),
         })
             .then((lootboxsRes) => {
-                // console.log(lootboxsRes)
+                console.log(lootboxsRes)
                 if (!lootboxsRes.ok) {
                     return lootboxsRes.json().then(e => Promise.reject(e));
                 }

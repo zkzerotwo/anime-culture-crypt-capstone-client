@@ -72,11 +72,11 @@ class Login extends React.Component {
         })
 
             .then((response) => {
-                // console.log("response ID", response);
+                console.log("response ID", response);
 
                 TokenService.saveAuthToken(response.authToken);
                 TokenService.saveUserId(response.userId);
-                
+                window.location = "/dashboard/";
             })
             .catch((err) => {
                 this.setState({
@@ -84,7 +84,7 @@ class Login extends React.Component {
                 })
                 // console.log(err);
             });
-            window.location = "/dashboard/";
+            
     };
 
     render() {

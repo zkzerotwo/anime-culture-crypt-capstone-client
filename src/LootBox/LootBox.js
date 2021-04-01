@@ -59,7 +59,8 @@ export default class LootBox extends React.Component {
         fetch(`${config.AUTH_ENDPOINT}/lootboxes/${lootboxId}`, {
             method: 'DELETE',
             headers: {
-                'content-type': 'application/json'
+                'content-type': 'application/json',
+                'Authorization': `${config.APP_API_TOKEN}`
             },
         })
             .then(res => {

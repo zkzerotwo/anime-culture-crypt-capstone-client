@@ -173,8 +173,8 @@ export default class AddToLootbox extends React.Component {
                 fetch(`${config.AUTH_ENDPOINT}/drops`, {
                     method: 'POST',
                     headers: {
-                        'content-type': 'application/json'
-                        // 'Authorization': `Bearer ${config.API_KEY}`
+                        'content-type': 'application/json',
+                        'Authorization': `${config.APP_API_TOKEN}`
                     },
                     body: JSON.stringify(payload),
                 })

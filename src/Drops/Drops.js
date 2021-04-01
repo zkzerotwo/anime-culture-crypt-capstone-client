@@ -15,7 +15,8 @@ export default class Drops extends React.Component {
         fetch(`${config.AUTH_ENDPOINT}/drops/${dropId}`, {
             method: 'DELETE',
             headers: {
-                'content-type': 'application/json'
+                'content-type': 'application/json',
+                'Authorization': `${config.APP_API_TOKEN}`
             },
         })
             .then(res => {

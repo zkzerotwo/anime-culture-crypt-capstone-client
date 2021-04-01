@@ -40,7 +40,9 @@ export default class Dashboard extends React.Component {
         fetch(deleteEndpoint, {
             method: 'DELETE',
             headers: {
-                'content-type': 'application/json'
+                'content-type': 'application/json',
+                'Authorization': `${config.APP_API_TOKEN}`
+
             }
         })
             .then((user) => {
