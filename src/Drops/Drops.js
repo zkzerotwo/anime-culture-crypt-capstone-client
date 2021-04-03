@@ -33,25 +33,37 @@ export default class Drops extends React.Component {
             })
     }
     lootSearchDrop() {
-        
+
+        return (
+            <>
+                <h3>{this.props.drop.drop_name}</h3>
+                <img alt={this.props.drop.drop_description} src={this.props.drop.image_url} />
+            </>
+        )
     }
 
-render() {
-    // console.log(this.props.drop.image_url, "drop props")
-    const drop = this.props.drop
-    return (
+    render() {
+        // console.log(this.props.drop.image_url, "drop props")
+        console.log(this.props.search, "search check")
+        const check = this.props.search
+        const dropToggle = this.lootSearchDrop
+        const drop = this.props.drop
+        return (
         <div className="drop_list">
-            <h3>{drop.drop_name}</h3>
-            <p>{drop.drop_description}</p>
-            <img alt={drop.drop_name} src={drop.image_url} />
-            <button
-                className='drop_delete'
-                type='button'
-                onClick={this.handleClickDelete}>
-                {' '}
+            {check ? dropToggle : <>
+                <h3>{drop.drop_name}</h3>
+                <p>{drop.drop_description}</p>
+                <img alt={drop.drop_name} src={drop.image_url} />
+                <button
+                    className='drop_delete'
+                    type='button'
+                    onClick={this.handleClickDelete}>
+                    {' '}
         Delete Drop
       </button>
+            </>
+            }
         </div>
-    )
-}
+        )
+    }
 }
