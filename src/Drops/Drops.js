@@ -32,6 +32,9 @@ export default class Drops extends React.Component {
                 console.error({ error })
             })
     }
+    lootSearchDrop() {
+        
+    }
 
 render() {
     // console.log(this.props.drop.image_url, "drop props")

@@ -82,7 +82,7 @@ export default class LootBox extends React.Component {
         const lootboxDrops = this.state.drops
         // console.log(lootboxDrops, "Second check")
         const dropRender = lootboxDrops.map(drop => {
-            return <li><Drops key={drop.id} drop={drop} /></li>
+            return <li key={drop.id}><Drops  drop={drop} /></li>
         })
 
         return (

@@ -126,4 +126,12 @@ ul#lootbox_drops li {
   width: 18%;
 }
 
+section.lootbox_search_results {
+  display: block;
+  width: 100%;
+}
 
+ul#lootbox_search_entries {
+  display: flex;
+  flex-direction: column;
+}

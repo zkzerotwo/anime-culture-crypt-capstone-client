@@ -1,6 +1,7 @@
 import React from 'react'
 import config from '../config';
 import ResultBar from '../ResultBar/ResultBar'
+import LootboxSearchResults from '../LootboxSearchResults/LootboxSearchResults'
 
 export default class LootboxSearchBar extends React.Component {
     constructor(props) {
@@ -78,15 +79,31 @@ export default class LootboxSearchBar extends React.Component {
     render() {
         // console.log(this.context, "context check")
         const fliterTheseResults = this.state.searchResults
-        const seriesType = this.state.searchConfig
+        // const seriesType = this.state.searchConfig
         const filter = this.state.query.value.toLowerCase()
         const resultsList = fliterTheseResults.filter(searchKey => {
-             console.log(searchKey.description, "lootboxes desc")
-             console.log(filter, "filter")
-            let filteredResults = searchKey.description.toLowerCase().includes(filter)
+            console.log(searchKey.description, "lootboxes desc")
+            // console.log(filter, "filter")
+            let filteredResultsDesc = searchKey.description.toLowerCase().includes(filter)
+            // let filteredResultsTit = searchKey.title.toLowerCase().includes(filter)
+            let output = []
+            if (!filteredResultsDesc 
+                // || !filteredResultsTit
+                )                 {
+                console.log("no results")
+                console.log(filteredResultsDesc, 
+                    // filteredResultsTit, 
+                    "filter results check?")
+                output = false
+            } else if (filteredResultsDesc) {
+                // console.log(filteredResultsDesc, "desc resul")
+                output = filteredResultsDesc
+                console.log(output, "test output")
+            // } else if (filteredResultsTit) {
+                // console.log(filteredResultsTit, "title results")
+                // output =+ filteredResultsTit
+            } return output
             // console.log(filteredResults)
-            return filteredResults
-
         })
         // console.log(this.state.searchResults, "state check")
         console.log(resultsList, "filtered array")
@@ -118,7 +135,8 @@ export default class LootboxSearchBar extends React.Component {
                         Submit!
                     </button>
                 </form>
-                <ResultBar seriesType={seriesType} results={resultsList} />
+                <LootboxSearchResults results={resultsList} />
+                {/* <ResultBar seriesType={seriesType}  /> */}
             </section>
         )
     }
