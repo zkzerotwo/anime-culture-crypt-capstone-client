@@ -7,8 +7,7 @@ export default class LootBox extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            drops: [],
-            // lootboxes: []
+            drops: []
         }
     }
     static defautProps = {
@@ -18,13 +17,6 @@ export default class LootBox extends React.Component {
     }
     componentDidMount() {
         let currentUser = TokenService.getUserId();
-        // console.log(currentUser, "user id")
-        // console.log(this.props.lootbox, "lootbox id")
-        //if the user is not logged in, send him to landing page
-        // if (!TokenService.hasAuthToken()) {
-        //     window.location = '/'
-        // }
-
         let getDropsInLootboxes = `${config.AUTH_ENDPOINT}/lootboxes/${this.props.lootbox.id}/saved`
         let getUserLootboxesUrl = `${config.AUTH_ENDPOINT}/users/${currentUser}/lootboxes`
         // console.log(getDropsInLootboxes, "drop list url")
@@ -69,8 +61,6 @@ export default class LootBox extends React.Component {
             })
             .then(() => {
                 window.location = '/dashboard'
-                // this.context.deleteNote(noteId)
-                // this.props.onDeleteNote(noteId)
             })
             .catch(error => {
                 console.error({ error })
@@ -81,7 +71,7 @@ export default class LootBox extends React.Component {
         // console.log(this.props, "prop check")
         const lootboxDrops = this.state.drops
         const dropRender = lootboxDrops.map(drop => {
-            return <li key={drop.id}><Drops drop={drop} /></li>
+            return <li  className="loot_drop" key={drop.id}><Drops drop={drop} search={this.props.search}/></li>
         })
         // console.log(lootboxDrops, "Second check")
         return (

@@ -1,11 +1,9 @@
 import React from 'react'
 import config from '../config'
 import TokenService from '../services/token-service'
-// import { Link } from 'react-router-dom'
 import Lootbox from '../LootBox/LootBox'
 import CreateLootbox from '../CreateLootbox/CreateLootbox'
 import Navbar from '../NavBar/NavBar'
-import { getDropsForLootbox } from '../lootbox-handlers'
 
 export default class Dashboard extends React.Component {
     constructor(props) {
@@ -63,8 +61,6 @@ export default class Dashboard extends React.Component {
             window.location = '/'
         }
         let getUserLootboxesUrl = `${config.AUTH_ENDPOINT}/users/${currentUser}/lootboxes`
-        // let getDropsUrl = `${config.AUTH_ENDPOINT}/drops`
-        // let getDropsInLootboxes = `${config.AUTH_ENDPOINT}/${this.state.lootboxes.id}/saved`
         // console.log(getDropsInLootboxes)
         fetch(getUserLootboxesUrl)
             .then((lootboxes) => {
@@ -89,9 +85,7 @@ export default class Dashboard extends React.Component {
     render() {
 
         const pulledBoxes = this.state.lootboxes
-        // const userLootboxes = getDropsForLootbox(pulledBoxes, pulledBoxes.id).map(box => {
         const userLootboxes = pulledBoxes.map(box => {
-            // console.log(box.id, "box check")
             return (
                 <li>
                     <Lootbox key={box.id} lootbox={box} />

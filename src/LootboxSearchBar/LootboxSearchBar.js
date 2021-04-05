@@ -1,6 +1,5 @@
 import React from 'react'
 import config from '../config';
-import ResultBar from '../ResultBar/ResultBar'
 import LootboxSearchResults from '../LootboxSearchResults/LootboxSearchResults'
 
 export default class LootboxSearchBar extends React.Component {
@@ -23,17 +22,6 @@ export default class LootboxSearchBar extends React.Component {
         this.setState({
             searchResults: []
         })
-        // const endpoint = `${config.AUTH_ENDPOINT}`
-        // const pass = `${config.API_TOKEN}`
-        // const query = this.state.query.value
-        // this.state.search
-        // const options = {
-        //     "method": "GET",
-        //     "headers": {
-        //         "x-rapidapi-key": pass,
-        //         "x-rapidapi-host": "jikan1.p.rapidapi.com"
-        //     }
-        // }
         const fullUrl = `${config.AUTH_ENDPOINT}/lootboxes`
         // console.log(fullUrl, "url check")
         fetch(fullUrl, {
@@ -82,26 +70,19 @@ export default class LootboxSearchBar extends React.Component {
         // const seriesType = this.state.searchConfig
         const filter = this.state.query.value.toLowerCase()
         const resultsList = fliterTheseResults.filter(searchKey => {
-            console.log(searchKey.description, "lootboxes desc")
-            // console.log(filter, "filter")
+            // console.log(searchKey.description, "lootboxes desc")
             let filteredResultsDesc = searchKey.description.toLowerCase().includes(filter)
-            // let filteredResultsTit = searchKey.title.toLowerCase().includes(filter)
             let output = []
             if (!filteredResultsDesc 
-                // || !filteredResultsTit
                 )                 {
                 console.log("no results")
                 console.log(filteredResultsDesc, 
-                    // filteredResultsTit, 
                     "filter results check?")
                 output = false
             } else if (filteredResultsDesc) {
                 // console.log(filteredResultsDesc, "desc resul")
                 output = filteredResultsDesc
-                console.log(output, "test output")
-            // } else if (filteredResultsTit) {
-                // console.log(filteredResultsTit, "title results")
-                // output =+ filteredResultsTit
+                // console.log(output, "test output")
             } return output
             // console.log(filteredResults)
         })
@@ -120,23 +101,11 @@ export default class LootboxSearchBar extends React.Component {
                             required
                         ></input>
                     </label>
-                    {/* <label
-                        htmlFor="search-type"
-                    >
-                        <select
-                            id="search-type"
-                            name="search-type"
-                            defaultValue={this.state.searchConfig}
-                            onChange={e => this.updateSearchType(e.target.value)}>
-                            {searchType}
-                        </select>
-                    </label> */}
                     <button>
                         Submit!
                     </button>
                 </form>
                 <LootboxSearchResults results={resultsList} />
-                {/* <ResultBar seriesType={seriesType}  /> */}
             </section>
         )
     }

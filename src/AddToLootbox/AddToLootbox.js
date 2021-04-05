@@ -104,13 +104,6 @@ export default class AddToLootbox extends React.Component {
     }
     componentDidMount() {
         let currentUser = TokenService.getUserId();
-        // console.log(currentUser, "user id")
-
-        //if the user is not logged in, send him to landing page
-        // if (!TokenService.hasAuthToken()) {
-        //     window.location = '/'
-        // }
-
         let getUserLootboxesUrl = `${config.AUTH_ENDPOINT}/users/${currentUser}/lootboxes`
         fetch(getUserLootboxesUrl)
             .then((lootboxes) => {
@@ -179,7 +172,7 @@ export default class AddToLootbox extends React.Component {
                     body: JSON.stringify(payload),
                 })
                     .then((dropPost) => {
-                        // console.log(lootboxsRes)
+                        // console.log(dropPost)
                         if (!dropPost.ok) {
                             return dropPost.json().then(e => Promise.reject(e));
                         }
@@ -187,11 +180,7 @@ export default class AddToLootbox extends React.Component {
                     })
                     .then((newLootbox) => {
                         console.log(newLootbox)
-                        // this.context.addLootbox(newLootbox)
                     })
-                    // .then(
-                    //     this.props.history.push('/')
-                    // )
                     .catch(error => this.setState({ error }))
             })
             .catch(err => {

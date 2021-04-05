@@ -16,7 +16,6 @@ export default class ResultBar extends React.Component {
 
     render() {
         // console.log(this.props.results, "results props")
-
         const entries = this.props.results.map(entry => {
             return (
                 <li key={entry.mal_id}>

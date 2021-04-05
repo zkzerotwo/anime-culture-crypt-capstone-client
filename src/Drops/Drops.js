@@ -5,7 +5,7 @@ export default class Drops extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-
+            dash: false
         }
     }
     handleClickDelete = e => {
@@ -25,45 +25,72 @@ export default class Drops extends React.Component {
             })
             .then(() => {
                 window.location = '/dashboard'
-                // this.context.deleteNote(noteId)
-                // this.props.onDeleteNote(noteId)
             })
             .catch(error => {
                 console.error({ error })
             })
     }
-    lootSearchDrop() {
-
-        return (
-            <>
-                <h3>{this.props.drop.drop_name}</h3>
-                <img alt={this.props.drop.drop_description} src={this.props.drop.image_url} />
-            </>
-        )
+    componentDidMount() {
+        this.windowCheck()
     }
-
-    render() {
-        // console.log(this.props.drop.image_url, "drop props")
-        console.log(this.props.search, "search check")
-        const check = this.props.search
-        const dropToggle = this.lootSearchDrop
+    windowCheck() {
+        if (!this.props.search) {
+            this.setState({
+                dash: true
+            })
+        }
+    }
+    lootSearchDrop() {
         const drop = this.props.drop
         return (
-        <div className="drop_list">
-            {check ? dropToggle : <>
-                <h3>{drop.drop_name}</h3>
-                <p>{drop.drop_description}</p>
-                <img alt={drop.drop_name} src={drop.image_url} />
+            <>
+                <h3>
+                    {this.props.drop.drop_name}
+                </h3>
+                <img alt={this.props.drop.drop_description} src={this.props.drop.image_url} />
+                <p>
+                    {drop.drop_description}
+                </p>
+                <a href={drop.url}>
+                    Learn More
+                    </a>
                 <button
                     className='drop_delete'
                     type='button'
                     onClick={this.handleClickDelete}>
                     {' '}
-        Delete Drop
-      </button>
+                         Delete Drop
+                </button>
+
             </>
-            }
-        </div>
+        )
+    }
+
+    render() {
+        // console.log(this.props.drop, "drop props")
+        // console.log(this.state.dash, "dash check")
+        console.log(this.props.location)
+        const check = this.state.dash
+        const drop = this.props.drop
+        // console.log(this.props.search, "check check")
+        return (
+            <div className="drop_list">
+                {check ? this.lootSearchDrop() :
+                    <>
+                        <h3>
+                            {drop.drop_name}
+                        </h3>
+
+                        <img alt={drop.drop_name} src={drop.image_url} />
+                        <p>
+                            {drop.drop_description}
+                        </p>
+                        <a href={drop.url}>
+                            Learn More
+                            </a>
+                    </>
+                }
+            </div>
         )
     }
 }

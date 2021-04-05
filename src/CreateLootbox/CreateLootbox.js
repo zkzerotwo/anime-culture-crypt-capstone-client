@@ -60,11 +60,6 @@ export default class CreateLootbox extends React.Component {
     componentDidMount() {
         let currentUser = TokenService.getUserId();
         console.log(currentUser, "user id")
-
-        //if the user is not logged in, send him to landing page
-        // if (!TokenService.hasAuthToken()) {
-        //     window.location = '/'
-        // }
         let getUserLootboxesUrl = `${config.AUTH_ENDPOINT}/users/${currentUser}/lootboxes`
         fetch(getUserLootboxesUrl)
             .then((lootboxes) => {
@@ -87,8 +82,6 @@ export default class CreateLootbox extends React.Component {
 
     handleSubmit = (e) => {
         e.preventDefault()
-        // console.log("Howdy")
-        // const { description, title, owner } = this.state.value
         const description = this.state.description.value
         const title = this.state.title.value
         const owner = this.state.owner.value
@@ -121,11 +114,8 @@ export default class CreateLootbox extends React.Component {
             })
             .then((newLootbox) => {
                 console.log(newLootbox)
-                // this.context.addLootbox(newLootbox)
             })
-            // .then(
-            //     this.props.history.push('/')
-            // )
+
             .catch(error => this.setState({ error }))
     }
     validateLootboxSelect() {
@@ -141,11 +131,6 @@ export default class CreateLootbox extends React.Component {
 
     render() {
         // console.log(this.state.lootboxes, this.state.owner.value, "Create loot check")
-        // const lootboxList = this.context.lootboxes.map(lootbox => {
-        //     return (
-        //         <option key={lootbox.id} value={lootbox.id}>{lootbox.title}</option>
-        //     )
-        // })
         return (
             <section>
                 <form onSubmit={this.handleSubmit}>

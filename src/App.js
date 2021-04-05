@@ -1,6 +1,5 @@
 import React from 'react'
 import './App.css';
-// import NavBar from './NavBar/NavBar'
 import LandingPage from './LandingPage/LandingPage'
 import Login from './Login/Login'
 import Register from './Register/Register'
@@ -43,16 +42,10 @@ class App extends React.Component {
           <BrowserRouter>
 
             <Switch>
-              {/* static routes */}
               <Route exact path='/' component={LandingPage} />
               <Route path='/login' component={Login} />
               <Route path='/register' component={Register} />
               <Route path='/dashboard' component={Dashboard} />
-
-              {/* dynamic route */}
-              {/* <Route path="/account/:variable_name" component={GrandChild} /> */}
-              {/* error route */}
-              {/* <Route component={Error} /> */}
             </Switch>
           </BrowserRouter>
         </div>
