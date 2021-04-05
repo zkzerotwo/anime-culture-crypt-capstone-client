@@ -109,7 +109,7 @@ export default class Register extends React.Component {
                 //console.log('user:', response)
                 TokenService.saveAuthToken(response.authToken)
                 TokenService.saveUserId(response.id)
-                // window.location = "/add-item"
+                window.location = "/dashboard"
             })
 
             .catch(res => {
@@ -131,6 +131,7 @@ export default class Register extends React.Component {
                             {msg}
                         </div>
                         <label htmlFor="username">Username</label>
+                        <p>Your email works just fine</p>
                         <input
                             type="text"
                             name="user_name"
@@ -147,6 +148,7 @@ export default class Register extends React.Component {
                         )}
 
                         <label>Password</label>
+                        <p>6 - 72 characters, but with a number or two</p>
                         <input
                             type="Password"
                             name="password"
