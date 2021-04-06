@@ -21,8 +21,13 @@
   border-style: ridge;
   border-color: silver;
   display: block;
-  width: 50%;
+  width: 95%;
   margin: auto;
+}
+
+form#api_search {
+  /* display: flex;
+  flex-direction: column; */
 }
 
 form.loginForm {
@@ -37,7 +42,7 @@ input {
   border-color: silver;
   padding: 15px;
   margin: 5px;
-  width: 35%;
+  width: 95%;
 }
 
 input[id=dropName] {
@@ -55,8 +60,9 @@ textarea {
   border-style: ridge;
   border-color: silver;
   display: block;
+  margin: auto;
 }
- 
+
 select {
   padding: 15px;
   margin: 5px;
@@ -100,6 +106,7 @@ li {
 }
 
 /* dashboard lootbox display */
+
 section.lootbox_display {
   display: flex;
   flex-direction: column;
@@ -119,13 +126,18 @@ ul#lootbox_drops {
   flex-wrap: nowrap;
   overflow: auto;
   list-style: none;
+  /* white-space: nowrap; */
+  /* margin-left: 200px; */
 }
 
 ul#lootbox_drops li {
   display: block;
   /* width: 18%; */
- 
 }
+
+/* ul#lootbox_drops li:first-child {
+  margin-left: 500px;
+} */
 
 li.loot_drop {
   border-width: 2px;
@@ -133,8 +145,12 @@ li.loot_drop {
   border-color: silver;
   display: block;
   /* width: 50%; */
-  margin: auto; 
+  margin: auto;
   height: 100%;
+}
+
+li.loot_drop:first-child {
+  margin-left: auto;
 }
 
 section.lootbox_search_results {
@@ -145,4 +161,24 @@ section.lootbox_search_results {
 ul#lootbox_search_entries {
   display: flex;
   flex-direction: column;
+}
+
+section.footer {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  border-width: 2px;
+  border-style: ridge;
+  border-color: silver;
+  
+}
+
+
+
+div.App {
+  padding-bottom:60px;
 }

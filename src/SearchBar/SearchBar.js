@@ -94,7 +94,7 @@ export default class SearchBar extends React.Component {
         // console.log(this.state, "state check")
         return (
             <section className='search-bar'>
-                <form onSubmit={e => this.handleSubmit(e)}>
+                <form className="api_search" onSubmit={e => this.handleSubmit(e)}>
                     <label>
                         <input type='text'
                             id='api_search'
@@ -120,7 +120,7 @@ export default class SearchBar extends React.Component {
                         Submit!
                     </button>
                 </form>
-                <ResultBar seriesType={seriesType} results={resultsList}/>
+                <ResultBar seriesType={seriesType} results={resultsList} />
             </section>
         )
     }

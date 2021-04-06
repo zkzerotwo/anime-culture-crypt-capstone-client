@@ -20,7 +20,7 @@ export default class LandingPage extends React.Component {
     }
     render() {
         return (
-            <section>
+            <section className="landing">
                 <header className="App-header">
                     <NavBar />
                 </header>
@@ -37,8 +37,6 @@ export default class LandingPage extends React.Component {
                     Search Lootboxes
                 </button> </> 
                 }
-
-                <Footer />
             </section>
         )
     }

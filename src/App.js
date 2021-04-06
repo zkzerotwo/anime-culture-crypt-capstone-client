@@ -4,6 +4,7 @@ import LandingPage from './LandingPage/LandingPage'
 import Login from './Login/Login'
 import Register from './Register/Register'
 import Dashboard from './Dashboard/Dashboard'
+import Footer from './Footer/Footer'
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import LootboxContext from './LootboxContext';
 
@@ -48,6 +49,7 @@ class App extends React.Component {
               <Route path='/dashboard' component={Dashboard} />
             </Switch>
           </BrowserRouter>
+          <Footer />
         </div>
       </LootboxContext.Provider>
     );

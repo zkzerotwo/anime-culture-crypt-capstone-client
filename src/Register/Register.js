@@ -3,6 +3,8 @@ import { NavLink } from 'react-router-dom'
 import ValidationError from '../ValidationError'
 import TokenService from '../services/token-service'
 import AuthApiService from '../services/auth-api-service'
+import { Redirect } from 'react-router-dom'
+import NavBar from '../NavBar/NavBar'
 
 export default class Register extends React.Component {
     constructor(props) {
@@ -110,6 +112,7 @@ export default class Register extends React.Component {
                 TokenService.saveAuthToken(response.authToken)
                 TokenService.saveUserId(response.id)
                 window.location = "/dashboard"
+                // <Redirect push to="/dashboard"/>
             })
 
             .catch(res => {
@@ -124,6 +127,7 @@ export default class Register extends React.Component {
             <div></div>;
         return (
             <div className="Register">
+                <NavBar />
                 <section id="signUpPage">
                     <h2>Sign up</h2>
                     <form className="registerForm" onSubmit={this.registerUser}>
