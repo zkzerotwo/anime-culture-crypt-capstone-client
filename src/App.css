@@ -139,6 +139,7 @@ li.loot_drop {
   display: table-cell;
   vertical-align: top;
   margin: 5px;
+  width: 85%;
 }
 
 
