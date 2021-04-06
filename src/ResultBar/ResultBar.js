@@ -33,7 +33,9 @@ export default class ResultBar extends React.Component {
             <section className="search-results">
                 <h3>RESULTS</h3>
                 <hr />
-                <ul className="entries">{entries}</ul>
+                <ul className="entries">
+                    {entries}
+                </ul>
 
             </section>
         )

@@ -16,33 +16,29 @@ export default class LootBox extends React.Component {
         }
     }
     componentDidMount() {
-        let currentUser = TokenService.getUserId();
+        // let currentUser = TokenService.getUserId();
         let getDropsInLootboxes = `${config.AUTH_ENDPOINT}/lootboxes/${this.props.lootbox.id}/saved`
-        let getUserLootboxesUrl = `${config.AUTH_ENDPOINT}/users/${currentUser}/lootboxes`
-        // console.log(getDropsInLootboxes, "drop list url")
-        Promise.all([
-            fetch(getDropsInLootboxes),
-            fetch(getUserLootboxesUrl)
-        ])
-            .then(([drops, lootboxes]) => {
+        // let getUserLootboxesUrl = `${config.AUTH_ENDPOINT}/users/${currentUser}/lootboxes`
+        console.log(getDropsInLootboxes, "drop list url")
+
+        fetch(getDropsInLootboxes)
+
+            .then(drops => {
                 if (!drops.ok)
                     return drops.json().then(e => Promise.reject(e));
-                if (!lootboxes.ok)
-                    return lootboxes.json().then(e => Promise.reject(e));
-                return Promise.all([drops.json(), lootboxes.json()])
+                return drops.json()
             })
-
-            .then(([drops, lootboxes]) => {
+            .then(drops => {
                 // console.log(drops, "fetch check 1")
                 this.setState({
-                    drops: drops.drops,
-                    lootboxes: lootboxes
+                    drops: drops.drops
                 })
             })
             .catch(error => this.setState({
                 error
             }))
-        // console.log(this.state, "fetch check")
+
+        console.log(this.state, "fetch check")
     }
     handleClickDelete = e => {
         e.preventDefault()
@@ -71,12 +67,20 @@ export default class LootBox extends React.Component {
         // console.log(this.props, "prop check")
         const lootboxDrops = this.state.drops
         const dropRender = lootboxDrops.map(drop => {
-            return <li  className="loot_drop" key={drop.id}><Drops drop={drop} search={this.props.search}/></li>
+            return <li
+                className="loot_drop"
+                key={drop.id}>
+                <Drops
+                    drop={drop}
+                    search={this.props.search}
+                />
+            </li>
         })
         // console.log(lootboxDrops, "Second check")
         return (
             <section className="lootbox_display">
                 <h3>{this.props.lootbox.title}</h3>
+                <h2>{this.props.lootbox.description}</h2>
                 <ul id="lootbox_drops">
                     {dropRender}
                 </ul>

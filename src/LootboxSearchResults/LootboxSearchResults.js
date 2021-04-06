@@ -45,8 +45,8 @@ export default class LootboxSearchResults extends React.Component {
         const entries = this.props.results.map(entry => {
             return (
 
-                <li>
-                    <Lootbox key={entry.id} 
+                <li key={entry.id}>
+                    <Lootbox 
                     lootbox={entry} 
                     search={this.props.search}
                     />

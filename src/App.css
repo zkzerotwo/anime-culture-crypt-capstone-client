@@ -25,10 +25,7 @@
   margin: auto;
 }
 
-form#api_search {
-  /* display: flex;
-  flex-direction: column; */
-}
+
 
 form.loginForm {
   display: flex;
@@ -118,11 +115,11 @@ div.drop_setup {
 }
 
 ul#lootbox_drops {
-  width: 100%;
+  width: 95%;
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
-  /* align-items:flex-end; */
+  justify-content: flex-start;
+  align-items: stretch;
   flex-wrap: nowrap;
   overflow: auto;
   list-style: none;
@@ -132,26 +129,18 @@ ul#lootbox_drops {
 
 ul#lootbox_drops li {
   display: block;
-  /* width: 18%; */
 }
 
-/* ul#lootbox_drops li:first-child {
-  margin-left: 500px;
-} */
 
 li.loot_drop {
   border-width: 2px;
   border-style: ridge;
   border-color: silver;
-  display: block;
-  /* width: 50%; */
-  margin: auto;
-  height: 100%;
+  display: table-cell;
+  vertical-align: top;
+  margin: 5px;
 }
 
-li.loot_drop:first-child {
-  margin-left: auto;
-}
 
 section.lootbox_search_results {
   display: block;
@@ -164,13 +153,7 @@ ul#lootbox_search_entries {
 }
 
 section.footer {
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
+  margin-top: 500px;
   border-width: 2px;
   border-style: ridge;
   border-color: silver;
@@ -181,5 +164,5 @@ section.footer {
 
 div.App {
   padding-bottom: 60px;
-  height: 100px;
+  height: 100%;
 }

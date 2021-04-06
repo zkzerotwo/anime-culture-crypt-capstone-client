@@ -207,7 +207,7 @@ export default class AddToLootbox extends React.Component {
             <div>
                 <form onSubmit={this.handleSubmit}>
 
-                    <h4>{this.props.entryId}</h4>
+                    {/* <h4>{this.props.entryId}</h4> */}
                     <div className="drop_setup">
                         <label htmlFor='dropName'>
                             Drop Nickname
