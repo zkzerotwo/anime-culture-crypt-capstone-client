@@ -222,7 +222,7 @@ export default class AddToLootbox extends React.Component {
                             required
                         />
                     </div>
-                    {/* {this.state.dropName.touched && (<ValidationError message={this.validateDropName()} />)} */}
+                    {this.state.dropName.touched && (<ValidationError message={this.validateDropName()} />)}
                     <label htmlFor="description">
                         Description
                 </label>
@@ -254,7 +254,7 @@ export default class AddToLootbox extends React.Component {
                     </label>
                     <button
                         type='submit'
-                    // disabled={this.validateTitle() || this.validateLootboxSelect()}
+                    disabled={this.validateTitle() || this.validateLootboxSelect()}
                     >
                         Save
     </button>

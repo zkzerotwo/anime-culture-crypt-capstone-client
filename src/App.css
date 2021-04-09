@@ -123,8 +123,6 @@ ul#lootbox_drops {
   flex-wrap: nowrap;
   overflow: auto;
   list-style: none;
-  /* white-space: nowrap; */
-  /* margin-left: 200px; */
 }
 
 ul#lootbox_drops li {
