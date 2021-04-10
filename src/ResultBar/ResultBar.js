@@ -18,7 +18,7 @@ export default class ResultBar extends React.Component {
         // console.log(this.props.results, "results props")
         const entries = this.props.results.map(entry => {
             return (
-                <li key={entry.mal_id}>
+                <li className="search_card" key={entry.mal_id}>
                     <img alt={entry.title} src={entry.image_url} />
                     <div>
                         <p>{entry.title}</p>
