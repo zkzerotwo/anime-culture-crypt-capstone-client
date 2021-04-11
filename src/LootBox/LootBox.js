@@ -79,8 +79,10 @@ export default class LootBox extends React.Component {
         // console.log(lootboxDrops, "Second check")
         return (
             <section className="lootbox_display">
-                <h3>{this.props.lootbox.title}</h3>
-                <h2>{this.props.lootbox.description}</h2>
+                <div className="lootbox_header">
+                    <h1>{this.props.lootbox.title}</h1>
+                    <h4>{this.props.lootbox.description}</h4>
+                </div>
                 <ul id="lootbox_drops">
                     {dropRender}
                 </ul>

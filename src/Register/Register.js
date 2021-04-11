@@ -127,40 +127,46 @@ export default class Register extends React.Component {
         return (
             <div className="Register">
                 <NavBar />
-                <section id="signUpPage">
+                <section id="sign_up_page">
                     <h2>Sign up</h2>
-                    <form className="registerForm" onSubmit={this.registerUser}>
+                    <form className="register_form" onSubmit={this.registerUser}>
                         <div className="errorMessage">
                             {msg}
                         </div>
-                        <label htmlFor="username">Username</label>
+                        <label htmlFor="username">
+                            Username
                         <p>Your email works just fine</p>
-                        <input
-                            type="text"
-                            name="user_name"
-                            placeholder="Username"
-                            onChange={(e) =>
-                                this.changeUsername(e.target.value)
-                            }
-                            required
-                        />
+                            <input
+                                type="text"
+                                name="user_name"
+                                placeholder="Username"
+                                onChange={(e) =>
+                                    this.changeUsername(e.target.value)
+                                }
+                                required
+                            />
+                        </label>
                         {this.state.user_name.touched && (
                             <ValidationError
                                 message={this.validateUserName()}
                             />
                         )}
 
-                        <label>Password</label>
-                        <p>6 - 72 characters, but with a number or two</p>
-                        <input
-                            type="Password"
-                            name="password"
-                            placeholder="Password"
-                            onChange={(e) =>
-                                this.changePassword(e.target.value)
-                            }
-                            required
-                        />
+                        <label>
+                            Password
+                        <p>
+                                6 - 72 characters, but with a number or two
+                        </p>
+                            <input
+                                type="Password"
+                                name="password"
+                                placeholder="Password"
+                                onChange={(e) =>
+                                    this.changePassword(e.target.value)
+                                }
+                                required
+                            />
+                        </label>
 
                         {this.state.password.touched && (
                             <ValidationError
@@ -169,16 +175,18 @@ export default class Register extends React.Component {
                         )}
 
 
-                        <label>Repeat Password</label>
+                        <label>
+                            Repeat Password
                         <input
-                            type="Password"
-                            name="repeatPassword"
-                            placeholder="Repeat Password"
-                            onChange={(e) =>
-                                this.updateRepeatPassword(e.target.value)
-                            }
-                            required
-                        />
+                                type="Password"
+                                name="repeatPassword"
+                                placeholder="Repeat Password"
+                                onChange={(e) =>
+                                    this.updateRepeatPassword(e.target.value)
+                                }
+                                required
+                            />
+                        </label>
 
                         {this.state.repeatPassword.touched && (
                             <ValidationError
@@ -195,7 +203,7 @@ export default class Register extends React.Component {
                         </button>
                     </form>
                     <div className="login">
-                        <p>
+                        <p className="acct">
                             Already have an account?
                         </p>
                         <p>

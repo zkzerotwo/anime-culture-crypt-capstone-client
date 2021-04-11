@@ -1,316 +1,368 @@
 /*Super responsive styling!*/
 
-  
+/* Overall styling*/
+
+/* Static styles. Navbar, header, footer*/
+
 body {
   border: 3px solid white;
 }
 
+.root {
+  background-image: url("./images/dex-ezekiel-IxDPZ-AHfoI-unsplash.png");
+  background-color: black;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.App {
+  text-align: center;
+  padding-bottom: 60px;
+  height: 100%;
+  font-family: Archivo, Helvetica, sans-serif;
+  padding-bottom: 60px;
+  height: 100%;
+}
+
+a {
+  color: silver;
+}
+
+a:visited {
+  color: palegoldenrod;
+}
+
+hr {
+  width: 75%;
+  border-top: 5px;
+  color: silver;
+  margin: auto;
+}
+
+li {
+  margin: 15px;
+  padding: 10px;
+}
+
+.nav {
+  margin-top: 0px;
+  padding-top: 5px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  height: 50px;
+}
+
+h3.navbar-button {
+  background-image: url("./images/transparent.jpg");
+  width: 50%;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.welcome {
+  color: white;
+  width: 100%;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  background: linear-gradient(90deg, rgba(0, 0, 0, 0.25) 0%, rgba(0, 0, 0, 1) 50%, rgba(0, 0, 0, 0.25) 100%);
+}
+
+.intro-card {
+  color: white;
+  border-width: 2px;
+  border-style: ridge;
+  border-color: silver;
+  border-radius: 5px;
+  display: block;
+  width: 95%;
+  margin: auto;
+  padding: 5px;
+  background-image: url("./images/transparent.jpg");
+}
+
+section.footer {
+  color: white;
+  margin-top: 500px;
+  border-width: 2px;
+  border-style: ridge;
+  border-color: silver;
+  background-image: url("./images/transparent.jpg");
+}
+
+/*Forms and buttons*/
+
+form.register_form {
+  background-image: url("./images/transparent.jpg");
+  color: white;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+section#sign_up_page h2 {
+  margin-left: auto;
+  margin-right: auto;
+  width: 33%;
+  padding-left: 15px;
+  padding-right: 15px;
+  border-radius: 50px;
+  color: white;
+  background-image: url("./images/transparent.jpg");
+}
+
+section#loginPage {
+  color: white;
+}
+
+form.loginForm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-image: url("./images/transparent.jpg");
+}
+
+.login p.acct {
+  border-radius: 50px;
+  padding-left: 15px;
+  padding-right: 15px;
+  background-image: url("./images/transparency-white.png");
+}
+
+form.create_lootbox {
+  color: white;
+  background-image: url("./images/transparent.jpg");
+}
+
+input {
+  border-width: 2px;
+  border-style: ridge;
+  border-color: silver;
+  border-radius: 50px;
+  padding-left: 15px;
+  padding-right: 15px;
+  margin: 5px;
+  width: 95%;
+}
+
+input[id=dropName] {
+  border-width: 2px;
+  border-style: ridge;
+  border-color: silver;
+  border-radius: 50px;
+  padding: 15px;
+  margin: 5px;
+  width: 95%;
+}
+
+textarea {
+  width: 95%;
+  height: 75px;
+  padding-left: 20px;
+  padding-right: 20px;
+  border-width: 2px;
+  border-style: ridge;
+  border-color: silver;
+  border-radius: 50px;
+  display: block;
+  margin: auto;
+}
+
+select {
+  padding-left: 15px;
+  padding-left: 15px;
+  margin: 5px;
+  border-width: 2px;
+  border-style: ridge;
+  border-color: silver;
+  border-radius: 50px;
+}
+
+button {
+  border-width: 2px;
+  border-style: ridge;
+  border-color: silver;
+  border-radius: 10px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 5px;
+}
+
+button.delete_lootbox {
+  margin: auto;
+  background-color: gray;
+}
+
+/*API search and Lootbox Search results styling*/
+
+.search-results h3 {
+  background-image: url("./images/transparent.jpg");
+  width: 75%;
+  margin: auto;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  color: white;
+  border-radius: 50px;
+}
+
+ul.lootbox_search_entries {
+  width: 100%;
+  display: flex;
+  color: white;
+  flex-direction: column;
+  list-style: none;
+}
+
+.entries {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  flex-wrap: nowrap;
+  overflow: auto;
+  list-style: none;
+}
+
+.entries li {
+  background-image: url("./images/transparent.jpg");
+  border-width: 2px;
+  border-style: ridge;
+  border-color: silver;
+  border-radius: 50px;
+  padding: 20px;
+  /* padding-right: 20px; */
+  color: white;
+}
+
+li.search_card img {
+  border-radius: 50px;
+}
+
+section.users_lootboxes h2 {
+  color: white;
+}
+
+section.lootbox_display {
+  width: 100%;
+  padding: 10px;
+  color: white;
+  /* display: flex;
+    flex-direction: column; */
+}
+
+.lootbox_header {
+  background-image: url("./images/transparent.jpg");
+  width: 75%;
+  margin: auto;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  color: white;
+  border-radius: 50px;
+}
+
+
+ul.lootbox_drops {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  flex-wrap: nowrap;
+  overflow: auto;
+  list-style: none;
+}
+
+div.drop_setup {
+  display: flex;
+  flex-direction: column;
+}
+
+ul#lootbox_drops {
+  width: 100%;
+  display: flex;
+  /* flex-shrink: 0; */
+  /* display: inline-block; */
+  flex-direction: row;
+  justify-content: flex-start;
+  /* align-items: stretch; */
+  flex-wrap: nowrap;
+  overflow: auto;
+  list-style: none;
+}
+
+/* ul#lootbox_drops li {
+    display: block;
+    width: 100%;
+  } */
+
+li.loot_drop {
+  width: 100%;
+  border-width: 2px;
+  border-style: ridge;
+  border-color: silver;
+  /* display: table-cell; */
+  /* vertical-align: top;
+    margin: 5px;
+    width: 100%; */
+  flex-shrink: 0;
+  background-image: url("./images/transparent.jpg");
+}
+
+div.drop_list img {
+  width: 100%
+}
+
+li.dash_box_list {
+  margin: auto;
+  padding: 0px;
+}
+
 /*iPhone portrait*/
-@media only screen and (max-width: 320px) {
+
+@media only screen and (min-width: 320px) {
   body {
-      border: 3px solid purple;
+    border: 3px solid purple;
   }
-
-  a {
-    color: silver;
-  }
-
-  a:visited {
-    color: palegoldenrod;
-  }
-  .root {
-    background-image: url("./images/dex-ezekiel-IxDPZ-AHfoI-unsplash.png");
-    background-color: black;
-    background-attachment: fixed;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-  }
-  
-  .App {
-    text-align: center;
-    padding-bottom: 60px;
-    height: 100%;
-    font-family: Archivo, Helvetica, sans-serif
-  }
-  
-  .search-results h3 {
-    background-image: url("./images/transparent.jpg");
-    width: 75%;
-    margin: auto;
-    padding-top: 5px;
-    padding-bottom: 5px;
-    color: white;
-    border-radius: 50px;
-  }
-
   /* section.lootbox_search_results {
     display: block;
     width: 100%;
   } */
-  
-  ul.lootbox_search_entries {
-    width: 100%;
-    display: flex;
-    color: white;
-    flex-direction: column;
-    list-style: none;
-  }
-
-  ul.lootbox_drops {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    flex-wrap: nowrap;
-    overflow: auto;
-    list-style: none;
-    
-  }
-  
-  .nav {
-    margin-top: 0px;
-    padding-top: 5px;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    height: 50px;
-  }
-  
-  h3.navbar-button {
-    background-image: url("./images/transparent.jpg");
-    width: 50%;
-    padding-left: 10px;
-    padding-right: 10px;
-    
-  }
-  .welcome {
-    color: white;
-    width: 100%;
-    padding-top: 5px;
-    padding-bottom: 5px;
-    background: linear-gradient(90deg, rgba(0,0,0,0.25) 0%, rgba(0,0,0,1) 50%, rgba(0,0,0,0.25) 100%);
-  }
-  
-  .intro-card {
-    color: white;
-    border-width: 2px;
-    border-style: ridge;
-    border-color: silver;
-    border-radius: 5px;
-    display: block;
-    width: 95%;
-    margin: auto;
-    padding: 5px;
-    background-image: url("./images/transparent.jpg");
-  }
-  
-  section#loginPage {
-    color: white;
-  }
-  
-  form.loginForm {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background-image: url("./images/transparent.jpg");
-  }
-  
-  input {
-    border-width: 2px;
-    border-style: ridge;
-    border-color: silver;
-    border-radius: 50px;
-    padding-left: 15px;
-    padding-right: 15px;
-    margin: 5px;
-    width: 95%;
-  }
-  
-  input[id=dropName] {
-    border-width: 2px;
-    border-style: ridge;
-    border-color: silver;
-    border-radius: 50px;
-    padding: 15px;
-    margin: 5px;
-    width: 95%;
-  }
-  
-  textarea {
-    width: 95%;
-    height: 75px;
-    padding-left: 20px;
-    padding-right: 20px;
-    border-width: 2px;
-    border-style: ridge;
-    border-color: silver;
-    border-radius: 50px;
-    display: block;
-    margin: auto;
-  }
-  
-  select {
-    padding-left: 15px;
-    padding-left: 15px;
-    margin: 5px;
-    border-width: 2px;
-    border-style: ridge;
-    border-color: silver;
-    border-radius: 50px;
-  }
-  
-  button {
-    border-width: 2px;
-    border-style: ridge;
-    border-color: silver;
-    border-radius: 10px;
-    padding-left: 5px;
-    padding-right: 5px;
-    margin: 5px;
-  }
-  
-  button.delete_lootbox {
-    margin: auto;
-    background-color: gray;
-  }
-  
-  hr {
-    width: 75%;
-    border-top: 5px;
-    color: silver;
-    margin: auto;
-  }
-  
-  li {
-    margin: 15px;
-    padding: 10px;
-  }
-  
-  .entries {
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    flex-wrap: nowrap;
-    overflow: auto;
-    list-style: none;
-  }
-
-  .entries li {
-    background-image: url("./images/transparent.jpg");
-    border-width: 2px;
-    border-style: ridge;
-    border-color: silver;
-    border-radius: 50px;
-    padding: 20px;
-    /* padding-right: 20px; */
-    color: white;
-  }
-
-  li.search_card img {
-    border-radius: 50px;
-  }
-  
   /* dashboard lootbox display */
-  section.users_lootboxes, .h2 {
-    color: white;
-  }
-  
-  section.lootbox_display {
-    width: 100%;
-    /* display: flex;
-    flex-direction: column; */
-  }
-  
-  div.drop_setup {
-    display: flex;
-    flex-direction: column;
-  }
-  
-  ul#lootbox_drops {
-    width: 100%;
-    display: flex;
-    /* flex-shrink: 0; */
-    /* display: inline-block; */
-    flex-direction: row;
-    justify-content: flex-start;
-    /* align-items: stretch; */
-    flex-wrap: nowrap;
-    overflow: auto;
-    list-style: none;
-  }
-  
-  /* ul#lootbox_drops li {
-    display: block;
-    width: 100%;
-  } */
-  
-  
-  li.loot_drop {
-    width: 100%;
-    border-width: 2px;
-    border-style: ridge;
-    border-color: silver;
-    /* display: table-cell; */
-    /* vertical-align: top;
-    margin: 5px;
-    width: 100%; */
-    flex-shrink: 0;
-    background-image: url("./images/transparent.jpg");
-  }
-
-  div.drop_list img {
-    width: 100%
-  }
-  
-  section.footer {
-    color: white;
-    margin-top: 500px;
-    border-width: 2px;
-    border-style: ridge;
-    border-color: silver;
-    background-image: url("./images/transparent.jpg");
-  }
-  
-  
-  
-  div.App {
-    padding-bottom: 60px;
-    height: 100%;
-  }
+  /*iPhone landscape*/
 }
 
-/*iPhone landscape*/
-@media only screen and (max-width: 480px) {
+@media only screen and (min-width: 480px) {
   body {
-      border: 3px solid green;
+    border: 3px solid green;
   }
 }
 
 /*Android landscape*/
-@media only screen and (max-width: 640px) {
+
+@media only screen and (min-width: 640px) {
   body {
-      border: 3px solid pink;
+    border: 3px solid pink;
   }
 }
 
 /*iPad potrait*/
-@media only screen and (max-width: 768px) {
+
+@media only screen and (min-width: 768px) {
   body {
-      border: 3px solid red;
+    border: 3px solid red;
   }
 }
 
 /*iPad lanscape / small laptop*/
-@media only screen and (max-width: 1024px) {
+
+@media only screen and (min-width: 1024px) {
   body {
-      border: 3px solid blue;
+    border: 3px solid blue;
   }
 }
 
 /*large desktop*/
-@media only screen and (max-width: 1600px) {
+
+@media only screen and (min-width: 1600px) {
   body {
-      border: 3px solid yellow;
+    border: 3px solid yellow;
   }
 }

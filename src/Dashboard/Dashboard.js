@@ -87,7 +87,7 @@ export default class Dashboard extends React.Component {
         const pulledBoxes = this.state.lootboxes
         const userLootboxes = pulledBoxes.map(box => {
             return (
-                <li>
+                <li className="dash_box_list">
                     <Lootbox key={box.id} lootbox={box} />
                 </li>
             )
@@ -97,6 +97,7 @@ export default class Dashboard extends React.Component {
             <section className="users_lootboxes">
                 <Navbar />
                 <h2>Cache Board</h2>
+                <div className="create_lootbox"></div>
                 <CreateLootbox />
                 <ul className="lootboxes_list">
                     {userLootboxes}

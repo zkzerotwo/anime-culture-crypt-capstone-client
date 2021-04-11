@@ -1,7 +1,7 @@
 import React from 'react'
 import config from '../config'
 import TokenService from '../services/token-service'
-import ValidationError from '../ValidationError'
+// import ValidationError from '../ValidationError'
 
 export default class AddToLootbox extends React.Component {
     constructor(props) {

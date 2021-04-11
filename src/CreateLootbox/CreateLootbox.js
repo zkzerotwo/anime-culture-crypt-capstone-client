@@ -133,7 +133,7 @@ export default class CreateLootbox extends React.Component {
         // console.log(this.state.lootboxes, this.state.owner.value, "Create loot check")
         return (
             <section>
-                <form onSubmit={this.handleSubmit}>
+                <form className="create_lootbox" onSubmit={this.handleSubmit}>
                     <div>
                         <label htmlFor='lootboxTitle'>
                             Create a New Lootbox
