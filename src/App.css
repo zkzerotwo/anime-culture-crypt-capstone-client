@@ -100,6 +100,7 @@ form.register_form {
   margin-top: 10px;
   margin-bottom: 10px;
 }
+
 section#sign_up_page h2 {
   margin-left: auto;
   margin-right: auto;
@@ -260,7 +261,6 @@ section.lootbox_display {
   border-radius: 50px;
 }
 
-
 ul.lootbox_drops {
   display: flex;
   flex-direction: row;
@@ -298,10 +298,6 @@ li.loot_drop {
   border-width: 2px;
   border-style: ridge;
   border-color: silver;
-  /* display: table-cell; */
-  /* vertical-align: top;
-    margin: 5px;
-    width: 100%; */
   flex-shrink: 0;
   background-image: url("./images/transparent.jpg");
 }
@@ -333,6 +329,9 @@ li.dash_box_list {
   body {
     border: 3px solid green;
   }
+  li.loot_drop {
+    width: 49%;
+  }
 }
 
 /*Android landscape*/
@@ -340,6 +339,9 @@ li.dash_box_list {
 @media only screen and (min-width: 640px) {
   body {
     border: 3px solid pink;
+  }
+  li.loot_drop {
+    width: 32%;
   }
 }
 
@@ -357,6 +359,9 @@ li.dash_box_list {
   body {
     border: 3px solid blue;
   }
+  li.loot_drop {
+    width: 24%;
+  }
 }
 
 /*large desktop*/
@@ -364,5 +369,8 @@ li.dash_box_list {
 @media only screen and (min-width: 1600px) {
   body {
     border: 3px solid yellow;
+  }
+  li.loot_drop {
+    width: 19%;
   }
 }

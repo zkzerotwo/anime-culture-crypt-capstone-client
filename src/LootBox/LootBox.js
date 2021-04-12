@@ -1,6 +1,6 @@
 import React from 'react'
 import Drops from '../Drops/Drops'
-import TokenService from '../services/token-service'
+// import TokenService from '../services/token-service'
 import config from '../config'
 
 export default class LootBox extends React.Component {
