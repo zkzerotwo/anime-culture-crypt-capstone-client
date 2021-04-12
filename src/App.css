@@ -231,7 +231,6 @@ ul.lootbox_search_entries {
   border-color: silver;
   border-radius: 50px;
   padding: 20px;
-  /* padding-right: 20px; */
   color: white;
 }
 
@@ -247,8 +246,6 @@ section.lootbox_display {
   width: 100%;
   padding: 10px;
   color: white;
-  /* display: flex;
-    flex-direction: column; */
 }
 
 .lootbox_header {
@@ -278,20 +275,12 @@ div.drop_setup {
 ul#lootbox_drops {
   width: 100%;
   display: flex;
-  /* flex-shrink: 0; */
-  /* display: inline-block; */
   flex-direction: row;
   justify-content: flex-start;
-  /* align-items: stretch; */
   flex-wrap: nowrap;
   overflow: auto;
   list-style: none;
 }
-
-/* ul#lootbox_drops li {
-    display: block;
-    width: 100%;
-  } */
 
 li.loot_drop {
   width: 100%;
@@ -317,12 +306,6 @@ li.dash_box_list {
   body {
     border: 3px solid purple;
   }
-  /* section.lootbox_search_results {
-    display: block;
-    width: 100%;
-  } */
-  /* dashboard lootbox display */
-  /*iPhone landscape*/
 }
 
 @media only screen and (min-width: 480px) {
