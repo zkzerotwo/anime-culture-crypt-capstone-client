@@ -53,13 +53,18 @@ li {
   flex-direction: row;
   justify-content: space-around;
   height: 50px;
+  margin-bottom: 10px;
 }
 
 h3.navbar-button {
   background-image: url("./images/transparent.jpg");
-  width: 50%;
+  width: 30%;
+  height: 100%;
   padding-left: 10px;
   padding-right: 10px;
+  padding-top: 10px;
+  
+  border-radius: 50px;
 }
 
 .welcome {
@@ -315,6 +320,12 @@ li.dash_box_list {
   li.loot_drop {
     width: 49%;
   }
+  .intro-card {
+    width: 74%;
+  }
+  input {
+    width: 75%;
+  }
 }
 
 /*Android landscape*/
@@ -326,6 +337,15 @@ li.dash_box_list {
   li.loot_drop {
     width: 32%;
   }
+  .intro-card {
+    width: 32%;
+  }
+  input {
+    width: 50%;
+  }
+  .search-results h3 {
+    width: 50%;
+  }
 }
 
 /*iPad potrait*/
@@ -333,6 +353,9 @@ li.dash_box_list {
 @media only screen and (min-width: 768px) {
   body {
     border: 3px solid red;
+  }
+  .intro-card {
+    width: 32%;
   }
 }
 

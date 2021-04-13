@@ -3,12 +3,12 @@ Find and save your favorite anime and manga to a curated list
 
 
 
-### 1. Working Prototype (to do later)
+### 1. Working Prototype
 (Example) You can access a working prototype of the React app here: https://your-app-client.herokuapp.com/ and Node app here: https://your-app-server.herokuapp.com/
 
 
 
-### 2. User Stories (to do now)
+### 2. User Stories
 This app is for two types of users: a visitor and a logged-in user
 
 ###### Landing Page (Importance - High) (Est: 1h)
@@ -85,39 +85,61 @@ The app's functionality includes:
 * Every User has the ability to click a link to watch their show
 
 
-### 4. Technology (done)
+### 4. Technology
 * Front-End: HTML5, CSS3, JavaScript ES6, React
 * Back-End: Node.js, Express.js, Mocha, Chai, RESTful API Endpoints, Postgres
 * Development Environment: Heroku, DBeaver
 
 
 
-### 5. Wireframes (to do now)
-(Example) Landing Page
+### 5. Wireframes
+Landing Page
 :-------------------------:
 ![Landing Page](/github-images/wireframes/landing-page-wireframe.png)
+
 Register Page
-![Register Page](/github-images/wireframes/register-page-wireframe.png)
+:-------------------------:
+![Register Page](/github-images/wireframes/sign-up-wireframe.png)
+
+Login Page
+:-------------------------:
+![Login Page](/github-images/wireframes/login-page-wireframe.png
+
+User Dashboard Page
+:-------------------------:
+![Dashboard Page](/github-images/wireframes/new=user-dashboard.png)
+
+Lootbox Display Page
+:-------------------------:
+![Lootbox Display Page](/github-images/wireframes/lootbox-display-wireframe.png)
+
+
+Search Result Page
+:-------------------------:
+![Search Result Page](/github-images/wireframes/search-result-wireframe.png)
 
 
 
-### 6. Front-end Structure - React Components Map (to do later)
+### 6. Front-end Structure - React Components Map
 * __Index.js__ (stateless)
     * __App.js__ (stateful)
-        * __Navbar.js__ (stateless) - 
-        * __LandingPage.js__ (stateful) - gets the _"prop name"_ and the _"callback prop name"_ from the __App.js__
-            * __Login.js__ (stateful) -
-            * __Register.js__ (stateful) - 
-            * __SearchBar.js__ (stateful) - gets searches from users and boxes imported from context
-            * __ResultBar__ (stateful) - gets data from fetch requests either from user lootboxes or API
+        * __LandingPage.js__ (stateful) - gets the _"prop name"_ and the _"callback prop name"_ from the __App.js__ 
+            * __Navbar.js__ (stateless) - 
+                * __Login.js__ (stateful) -
+                * __Register.js__ (stateful) - 
+            * __Footer.js__ (stateless) - Displays contact data, a site map
+            * __SearchBar.js__ (stateful) - gets searches from users and boxes imported from API
+                * __ResultBar__ (stateful) - gets data from fetch requests either from user lootboxes or API
+            * __LootboxSearchBar.js__ (stateful) - gets searches from users and boxes imported from server
+                * __LootboxResultBar__ (stateful) - gets data from fetch requests either from user lootboxes or API
+                    * __LootBoxes.js__ (stateful) - gets drops held in state and imported from context
+                        * __Drops.js__ (stateufl) - gets drops contained in each lootbox from LootBox.js
         * __UserAccount.js__ (stateful) - receives user selected from 
-        * __LootBoxes.js__ (stateful) - gets drops held in state and imported from context
-            * __Drops.js__ (stateufl) - gets drops contained in each lootbox from LootBox.js
-        * __Footer.js__ (stateless) - Displays contact data, a site map
+            * __LootBoxes.js__ (stateful) - gets drops held in state and imported from context
+                * __Drops.js__ (stateufl) - gets drops contained in each lootbox from LootBox.js
+        
 
-
-
-### 7. Back-end Structure - Business Objects (to do later)
+### 7. Back-end Structure - Business Objects
 *  Users (database table)
     * id (auto-generated)
     * user_name (email validation)
@@ -136,7 +158,7 @@ Register Page
     * image_url (varchar 255 not null) (api)
     * description (varchar 255 not null) (api)
 
-### 8. API Documentation (to do later)
+### 8. API Documentation
 #### API Overview
 ```text
     /api
@@ -149,6 +171,8 @@ Register Page
     │       └── /
     |   └── GET
             └── /:user_id
+    |    └── DELETE
+            └── /:user_id
     ├── /lootboxes
     │   └── GET
             ├── /
@@ -159,7 +183,7 @@ Register Page
     │       ├── /:lootbox_id
         └── PATCH
     │       ├── /:lootbox_id
-    ├── /lootboxes
+    ├── /drops
     │   └── GET
             ├── /
     │       ├── /:drop_id
@@ -201,28 +225,170 @@ Register Page
         "user_name": "demo@gmail.com"
     }
 ```
+##### GET `/api/users`
+```js
+    // req.body
+    {
+      "id": 2,
+      "user_name": 'peregrin.took@shire.com',
+      "password": 'secret'
+    }
+```
 
+##### GET `/api/lootboxes`
+```js
+    // req.body
+    {
+     "id": 6,
+     "title": "Shojo Classics",
+    "description": "Soft titles with a romantic plotline, beautiful characters, and a dramatic climax",
+    "is_public": 0,
+    "box_owner": 1
+    }
+```
 
+##### GET `/api/lootboxes/:lootbox_id`
+```js
+    // req.body
+    {
+     "id": 6
+    }
+```
 
-### 9. Screenshots (to do later)
-(Example) Landing Page
+##### POST `/api/lootboxes`
+```js
+    // req.body
+    {
+     "title": "Shojo Classics",
+    "description": "Soft titles with a romantic plotline, beautiful characters, and a dramatic climax",
+    "is_public": 0,
+    "box_owner": 1
+    }
+```
+
+##### PATCH `/api/lootboxes/:lootbox_id`
+```js
+    // req.body
+    {
+     "id": 1
+     "title": "Shojo Classics",
+    "description": "Soft titles with a romantic plotline, beautiful characters, and a dramatic climax",
+    "is_public": 0,
+    "box_owner": 1
+    }
+```
+
+##### DELETE `/api/lootboxes/:lootbox_id`
+```js
+    // req.body
+    {
+     "id": 1
+    }
+```
+
+##### GET `/api/drops`
+```js
+    // req.body
+    {
+     "id": 1,
+    "mal_id": 6969,
+    "drop_description": "A lovely advnture of two lovers star crossed through time.",
+    "lootbox_id": 1,
+    "drop_type": "manga",
+    "drop_name": "Naruto 2: Electric Boogaloo",
+    "url": "https://myanimelist.net/manga/42/Dragon_Ball",
+    "image_url": "https://cdn.myanimelist.net/images/manga/2/54545.jpg"
+    }
+```
+
+##### GET `/api/drops/:drop_id`
+```js
+    // req.body
+    {
+     "id": 1
+    }
+```
+
+##### POST `/api/drops`
+```js
+    // req.body
+    {
+    "mal_id": 6969,
+    "drop_description": "A lovely advnture of two lovers star crossed through time.",
+    "lootbox_id": 1,
+    "drop_type": "manga",
+    "drop_name": "Naruto 2: Electric Boogaloo",
+    "url": "https://myanimelist.net/manga/42/Dragon_Ball",
+    "image_url": "https://cdn.myanimelist.net/images/manga/2/54545.jpg"
+    }
+```
+
+##### PATCH `/api/drops/:drop_id`
+```js
+    // req.body
+    {
+     "id": 1
+    "mal_id": 6969,
+    "drop_description": "A lovely advnture of two lovers star crossed through time.",
+    "lootbox_id": 1,
+    "drop_type": "manga",
+    "drop_name": "Naruto 2: Electric Boogaloo",
+    "url": "https://myanimelist.net/manga/42/Dragon_Ball",
+    "image_url": "https://cdn.myanimelist.net/images/manga/2/54545.jpg"
+    }
+```
+
+##### DELETE `/api/drops/:drop_id`
+```js
+    // req.body
+    {
+     "id": 1
+    }
+```
+
+### 9. Screenshots
+Landing Page
 :-------------------------:
 ![Landing Page](/github-images/screenshots/landing-page-screenshot.png)
+
 Register Page
-![Register Page](/github-images/screenshots/register-page-screenshot.png)
+:-------------------------:
+![Register Page](/github-images/screenshots/sign-up-screenshot.png)
+
+Login Page
+:-------------------------:
+![Login Page](/github-images/screenshots/login-page-screenshot.png
+
+User Dashboard Page
+:-------------------------:
+![Dashboard Page](/github-images/screenshots/new-user-dashboard.png)
+
+Lootbox Display Page
+:-------------------------:
+![Lootbox Display Page](/github-images/screenshots/lootbox-display-screenshot.png)
+
+
+Search Result Page
+:-------------------------:
+![Search Result Page](/github-images/screenshots/search-result-screenshot.png)
 
 
 
-### 10. Development Roadmap (to do later)
+
+### 10. Development Roadmap
 This is v1.0 of the app, but future enhancements are expected to include:
-* (Example) add more functionality
+* Make drop names nullable
+* Add private lootboxes and restrict search to only public ones
+* Add color coding to drops to assign value in lootboxes
+* Lootbox showcase on the landing page
+* Add username and email distinction
 
 
 
-### 11. How to run it (done)
+### 11. How to run it
 Use command line to navigate into the project folder and run the following in terminal
 
-##### Local React scripts
+##### Local React scr
 * To install the react project ===> npm install
 * To run react (on port 3000) ===> npm start
 * To run tests ===> npm run test

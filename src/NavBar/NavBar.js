@@ -17,15 +17,15 @@ class NavBar extends React.Component {
     render() {
         return (
             <div className='nav'>
-                <NavLink to='/'><h3 className="navbar-button">Home</h3></NavLink>
+                <h3 className="navbar-button"><NavLink to='/'>Home</NavLink></h3>
                 {TokenService.hasAuthToken() ?
                     <>
-                        <NavLink to='/dashboard'><h3 className="navbar-button">Dashboard</h3></NavLink>
-                        <NavLink to="/" onClick={() => this.logOutClick()}><h3 className="navbar-button">Logout</h3></NavLink>
+                        <h3 className="navbar-button"><NavLink to='/dashboard'>Dashboard</NavLink></h3>
+                        <h3 className="navbar-button"><NavLink to="/" onClick={() => this.logOutClick()}>Logout</NavLink></h3>
                     </> :
                     <>
-                        <NavLink to='/login'><h3 className="navbar-button">Login</h3></NavLink>
-                        <NavLink to='/register'><h3 className="navbar-button">Sign Up</h3></NavLink>
+                        <h3 className="navbar-button"><NavLink to='/login'>Login</NavLink></h3>
+                        <h3 className="navbar-button"><NavLink to='/register'>Sign Up</NavLink></h3>
                     </>}
             </div>
         )
