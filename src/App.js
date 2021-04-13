@@ -30,6 +30,7 @@ class App extends React.Component {
 
 
   render() {
+    //for working within context
     const contextValue = {
       searchResults: this.state.searchResults,
       lootboxes: this.state.lootboxes,
@@ -37,11 +38,11 @@ class App extends React.Component {
       addToLootbox: this.handleAddToLootbox,
       addToDrops: this.handleAddToDrops
     }
+    //render browser routes
     return (
       <LootboxContext.Provider value={contextValue}>
         <div className="App">
           <BrowserRouter>
-
             <Switch>
               <Route exact path='/' component={LandingPage} />
               <Route path='/login' component={Login} />

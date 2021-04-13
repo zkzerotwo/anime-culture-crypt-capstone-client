@@ -103,6 +103,7 @@ export default class AddToLootbox extends React.Component {
         // console.log(imageUrl)
     }
     componentDidMount() {
+        //get user id and load lootboxes
         let currentUser = TokenService.getUserId();
         let getUserLootboxesUrl = `${config.AUTH_ENDPOINT}/users/${currentUser}/lootboxes`
         fetch(getUserLootboxesUrl)
@@ -124,6 +125,7 @@ export default class AddToLootbox extends React.Component {
     }
 
     handleSubmit = (e) => {
+        //add drops to selected lootbox
         e.preventDefault();
         // console.log(this.props.entryId)
         const entryEndpoint = `${config.API_ENDPOINT_SAVE}`
@@ -189,6 +191,7 @@ export default class AddToLootbox extends React.Component {
 
 
     }
+    //TODO: add submission validation
     render() {
         // console.log(this.state.lootboxes, "data check")
         // console.log(this.props.entryId, "id check")
